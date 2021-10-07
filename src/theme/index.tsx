@@ -2,7 +2,7 @@ import { ThemeOptions } from '@mui/material/styles';
 
 const defaultTypography: ThemeOptions['typography'] = {
   allVariants: {
-    fontFamily: 'Montserrat',
+    fontFamily: 'Montserrat, sans-serif',
   },
   h1: {
     fontSize: '52px',
@@ -63,7 +63,6 @@ export const light: ThemeOptions = {
       light: '#FF6262',
     },
   },
-
   typography: {
     ...defaultTypography,
     /* typography overrides goes here */
@@ -80,3 +79,24 @@ export const dark: ThemeOptions = {
     /* typography overrides goes here */
   },
 };
+
+// eslint-disable-next-line no-unused-vars
+export function generateMuiOverides(_theme?: ThemeOptions) {
+  const overides: ThemeOptions = {
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            // @ts-ignore
+            backgroundColor: '#007EFF',
+            textTransform: 'unset',
+            fontSize: '14px',
+            // boxShadow: '0px 8px 16px 0px rgba(0, 126, 255, 0.16)',
+            borderRadius: '8px',
+          },
+        },
+      },
+    },
+  };
+  return overides;
+}
