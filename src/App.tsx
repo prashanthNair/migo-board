@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useRoutes } from 'react-router-dom';
-
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { useAppSelector } from './redux/hooks';
@@ -16,6 +16,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={muiTheme}>
+      <CssBaseline />
       { elements }
     </ThemeProvider>
   );

@@ -1,9 +1,8 @@
 import React from 'react';
 import type { RouteObject } from 'react-router-dom';
 
-import Button from '@mui/material/Button';
+import Dashboard from '../pages/Dashboard';
 
 export default [
-  { path: '/dashboard', element: <Button>dashboard</Button> },
-  { path: '/dashboard/items', element: <Button>dashboard: Items</Button> },
+  { path: '/dashboard', element: <Dashboard /> },
 ] as Array<RouteObject>;
