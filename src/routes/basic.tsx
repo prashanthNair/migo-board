@@ -1,7 +1,6 @@
 import React from 'react';
 import type { RouteObject } from 'react-router-dom';
 
-import Button from '@mui/material/Button';
 import LoginPage from '../pages/Login';
 import SignupPage from '../pages/Signup';
 
