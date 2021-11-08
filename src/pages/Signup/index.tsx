@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
@@ -11,6 +11,10 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import useMediaQuery from '@mui/material/useMediaQuery';
+
+import { useAppDispatch } from '../../redux/hooks';
+import { createSessionThunk } from '../../redux/slices/brand';
+
 import animatedImage from '../../assets/images/signup-banner-animated.gif';
 
 const StyledBlueHeading = styled(Typography)({
@@ -31,64 +35,138 @@ const FormBox = styled(Box)({
   marginTop: '60px',
 });
 
-const SignupPage: React.FC = () => (
+const SizedBox = styled(Box)({
+  margin: '20px 0px',
+});
 
-  <Box>
-    <Grid container spacing={2}>
-      <Grid item xs={12} sm={6} md={4}>
-        <FormBox>
-          <StyledBlueHeading variant="h3">
-            Welcome to
-            {' '}
-            <br />
-            Migobucks Brands
-          </StyledBlueHeading>
-          <InputBox>
-            <FormControl variant="standard" sx={{ width: '25ch' }}>
-              <InputLabel htmlFor="name">Name</InputLabel>
-              <Input id="name" />
-            </FormControl>
-          </InputBox>
-          <InputBox>
-            <FormControl variant="standard" sx={{ width: '25ch' }}>
-              <InputLabel htmlFor="number">Mobile Number</InputLabel>
-              <Input id="number" />
-            </FormControl>
-          </InputBox>
-          <InputBox>
-            <FormControl variant="standard" sx={{ width: '25ch' }}>
-              <InputLabel htmlFor="email">Email</InputLabel>
-              <Input id="email" />
-            </FormControl>
-          </InputBox>
-          <InputBox>
-            <FormControl variant="standard" sx={{ width: '25ch' }}>
-              <InputLabel htmlFor="brand-name">Brand Name</InputLabel>
-              <Input id="brand-name" />
-            </FormControl>
-          </InputBox>
-          <InputBox>
-            <FormControl variant="standard" sx={{ width: '25ch' }}>
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input id="password" />
-            </FormControl>
-          </InputBox>
-          <InputBox>
-            <FormGroup>
-              <FormControlLabel control={<Checkbox />} label="Accept our Terms and services" />
-            </FormGroup>
-            <LongButton variant="contained">Signup</LongButton>
-          </InputBox>
-        </FormBox>
-      </Grid>
-      <Grid item sm={6} md={8}>
-        <ImageBox>
-          <img src={animatedImage} width={800} height={650} alt="abc" />
-        </ImageBox>
+// <Box>
+//   <Grid container spacing={2}>
+//     <Grid item xs={12} sm={6} md={4}>
+//       <FormBox>
+//         <StyledBlueHeading variant="h3">
+//           Welcome to
+//           {' '}
+//           <br />
+//           Migobucks Brands
+//         </StyledBlueHeading>
+//         <InputBox>
+//           <FormControl variant="standard" sx={{ width: '25ch' }}>
+//             <InputLabel htmlFor="name">Name</InputLabel>
+//             <Input id="name" />
+//           </FormControl>
+//         </InputBox>
+//         <InputBox>
+//           <FormControl variant="standard" sx={{ width: '25ch' }}>
+//             <InputLabel htmlFor="number">Mobile Number</InputLabel>
+//             <Input id="number" />
+//           </FormControl>
+//         </InputBox>
+//         <InputBox>
+//           <FormControl variant="standard" sx={{ width: '25ch' }}>
+//             <InputLabel htmlFor="email">Email</InputLabel>
+//             <Input id="email" />
+//           </FormControl>
+//         </InputBox>
+//         <InputBox>
+//           <FormControl variant="standard" sx={{ width: '25ch' }}>
+//             <InputLabel htmlFor="brand-name">Brand Name</InputLabel>
+//             <Input id="brand-name" />
+//           </FormControl>
+//         </InputBox>
+//         <InputBox>
+//           <FormControl variant="standard" sx={{ width: '25ch' }}>
+//             <InputLabel htmlFor="password">Password</InputLabel>
+//             <Input id="password" />
+//           </FormControl>
+//         </InputBox>
+//         <InputBox>
+//           <FormGroup>
+//             <FormControlLabel control={<Checkbox />} label="Accept our Terms and services" />
+//           </FormGroup>
+//           <LongButton variant="contained">Signup</LongButton>
+//         </InputBox>
+//       </FormBox>
+//     </Grid>
+//     <Grid item sm={6} md={8}>
+//       <ImageBox>
+//         <img src={animatedImage} width={800} height={650} alt="abc" />
+//       </ImageBox>
+const SignupPage: React.FC = () => {
+  const dispatch = useAppDispatch();
 
+  const [fullName, setFullName] = useState<string>('');
+  const [fullNumber, setFullNumber] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [brandName, setBrandName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const handleCreateSession = useCallback(() => {
+    dispatch(createSessionThunk({
+      fullName,
+      number: fullNumber,
+      email,
+      brandName,
+      password,
+    }));
+  }, []);
+
+  return (
+    <Box>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <FormBox>
+            <StyledBlueHeading variant="h3">
+              Welcome to
+            </StyledBlueHeading>
+            <StyledBlueHeading variant="h3">Migobucks Brands</StyledBlueHeading>
+            <SizedBox />
+            <InputBox>
+              <FormControl variant="standard">
+                <InputLabel htmlFor="input-fullname">Enter Full Name</InputLabel>
+                <Input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} id="input-fullname" fullWidth />
+              </FormControl>
+            </InputBox>
+            <InputBox>
+              <FormControl variant="standard">
+                <InputLabel htmlFor="input-fullnumber">Enter Full Number</InputLabel>
+                <Input value={fullNumber} onChange={(e) => setFullNumber(e.target.value)} id="input-fullnumber" />
+              </FormControl>
+            </InputBox>
+            <InputBox>
+              <FormControl variant="standard">
+                <InputLabel htmlFor="input-email">Email</InputLabel>
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="input-email" />
+              </FormControl>
+            </InputBox>
+            <InputBox>
+              <FormControl variant="standard">
+                <InputLabel htmlFor="input-brand">Brand Name</InputLabel>
+                <Input type="text" value={brandName} onChange={(e) => setBrandName(e.target.value)} id="input-brand" />
+              </FormControl>
+            </InputBox>
+            <InputBox>
+              <FormControl variant="standard">
+                <InputLabel htmlFor="input-passowrd">Password</InputLabel>
+                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="input-password" />
+              </FormControl>
+            </InputBox>
+            <InputBox>
+              <FormGroup>
+                <FormControlLabel control={<Checkbox />} label="Accept our Terms and services" />
+              </FormGroup>
+              <LongButton onClick={handleCreateSession} type="submit" variant="contained">Signup</LongButton>
+            </InputBox>
+          </FormBox>
+        </Grid>
+        <Grid item xs={8}>
+          <ImageBox>
+            <img src={animatedImage} width={800} height={650} alt="abc" />
+          </ImageBox>
+
+        </Grid>
       </Grid>
-    </Grid>
-  </Box>
-);
+    </Box>
+  );
+};
 
 export default SignupPage;
