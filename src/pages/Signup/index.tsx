@@ -11,6 +11,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link } from 'react-router-dom';
 
 import { useAppDispatch } from '../../redux/hooks';
 import { createSessionThunk } from '../../redux/slices/brand';
@@ -22,7 +23,8 @@ const StyledBlueHeading = styled(Typography)({
 });
 
 const LongButton = styled(Button)({
-  width: '250px',
+  width: '270px',
+  marginTop: '10px',
 });
 const ImageBox = styled(Box)({
   marginTop: '30px',
@@ -37,6 +39,9 @@ const FormBox = styled(Box)({
 
 const SizedBox = styled(Box)({
   margin: '20px 0px',
+});
+const CheckboxLink = styled(Link)({
+  fontSize: '14px',
 });
 
 // <Box>
@@ -100,6 +105,8 @@ const SignupPage: React.FC = () => {
   const [brandName, setBrandName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  const breakPointMobile = useMediaQuery('(max-device-width: 480px)');
+
   const handleCreateSession = useCallback(() => {
     dispatch(createSessionThunk({
       fullName,
@@ -113,57 +120,56 @@ const SignupPage: React.FC = () => {
   return (
     <Box>
       <Grid container spacing={2}>
-        <Grid item xs={4}>
-          <FormBox>
+        <Grid item xs={12} sm={6} md={4}>
+          <FormBox sx={{ marginLeft: breakPointMobile ? '40px' : '150px' }}>
             <StyledBlueHeading variant="h3">
               Welcome to
             </StyledBlueHeading>
             <StyledBlueHeading variant="h3">Migobucks Brands</StyledBlueHeading>
             <SizedBox />
             <InputBox>
-              <FormControl variant="standard">
-                <InputLabel htmlFor="input-fullname">Enter Full Name</InputLabel>
+              <FormControl variant="standard" sx={{ width: '25ch' }}>
+                <InputLabel htmlFor="input-fullname">Name</InputLabel>
                 <Input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} id="input-fullname" fullWidth />
               </FormControl>
             </InputBox>
             <InputBox>
-              <FormControl variant="standard">
-                <InputLabel htmlFor="input-fullnumber">Enter Full Number</InputLabel>
+              <FormControl variant="standard" sx={{ width: '25ch' }}>
+                <InputLabel htmlFor="input-fullnumber">Mobile Number</InputLabel>
                 <Input value={fullNumber} onChange={(e) => setFullNumber(e.target.value)} id="input-fullnumber" />
               </FormControl>
             </InputBox>
             <InputBox>
-              <FormControl variant="standard">
+              <FormControl variant="standard" sx={{ width: '25ch' }}>
                 <InputLabel htmlFor="input-email">Email</InputLabel>
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="input-email" />
               </FormControl>
             </InputBox>
             <InputBox>
-              <FormControl variant="standard">
+              <FormControl variant="standard" sx={{ width: '25ch' }}>
                 <InputLabel htmlFor="input-brand">Brand Name</InputLabel>
                 <Input type="text" value={brandName} onChange={(e) => setBrandName(e.target.value)} id="input-brand" />
               </FormControl>
             </InputBox>
             <InputBox>
-              <FormControl variant="standard">
+              <FormControl variant="standard" sx={{ width: '25ch' }}>
                 <InputLabel htmlFor="input-passowrd">Password</InputLabel>
                 <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="input-password" />
               </FormControl>
             </InputBox>
-            <InputBox>
-              <FormGroup>
-                <FormControlLabel control={<Checkbox />} label="Accept our Terms and services" />
-              </FormGroup>
-              <LongButton onClick={handleCreateSession} type="submit" variant="contained">Signup</LongButton>
-            </InputBox>
+            <Checkbox size="small" />
+            <CheckboxLink to="/"> Accept our Terms and services </CheckboxLink>
+            <LongButton onClick={handleCreateSession} type="submit" variant="contained">Signup</LongButton>
           </FormBox>
         </Grid>
-        <Grid item xs={8}>
-          <ImageBox>
-            <img src={animatedImage} width={800} height={650} alt="abc" />
-          </ImageBox>
+        {!breakPointMobile && (
+          <Grid item xs={8}>
+            <ImageBox>
+              <img src={animatedImage} width={900} height={600} alt="abc" />
+            </ImageBox>
 
-        </Grid>
+          </Grid>
+        )}
       </Grid>
     </Box>
   );
