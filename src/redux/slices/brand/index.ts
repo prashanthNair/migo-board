@@ -1,5 +1,6 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { createSlice, createSelector, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
+import { ICreateSessionPayload, createSession } from '../../../services/onboarding';
 
 interface Address {
   Street: string;
@@ -36,6 +37,15 @@ export interface BrandState {
     updatedAt?: Date
 }
 
+// Thunks
+export const createSessionThunk = createAsyncThunk(
+  'createSession',
+  async (payload: ICreateSessionPayload) => {
+    const response = await createSession(payload);
+    return response;
+  },
+);
+
 const initialState: BrandState = {};
 
 const brandSlice = createSlice({
@@ -46,6 +56,7 @@ const brandSlice = createSlice({
   },
 });
 
+// Selectors
 const getCurrentBrand = createSelector(
   (state: RootState) => state.brand,
   (brand) => brand,
