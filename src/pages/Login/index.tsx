@@ -61,10 +61,10 @@ const LoginPage: React.FC = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6} md={4}>
           <FormBox sx={{ marginLeft: breakPointMobile ? '45px' : '150px' }}>
-            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '' }}>
+            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '35px' }}>
               Welcome to
             </StyledBlueHeading>
-            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '' }}>Migobucks Brands</StyledBlueHeading>
+            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '35px' }}>Migobucks Brands</StyledBlueHeading>
             <SizedBox />
             <InputBox>
               <FormControl variant="standard" sx={{ width: '25ch' }}>
