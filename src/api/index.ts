@@ -3,8 +3,8 @@ import axios from 'axios';
 const isProduction: boolean = process.env.NODE_ENV === 'production';
 const { hostname } = window.location;
 
-const baseApiUrl = process.env.API_BASE_URL;
-const applicationDomain = process.env.APP_DOMAIN;
+const baseApiUrl = 'https://pt504ydu4f.execute-api.ap-south-1.amazonaws.com';
+const applicationDomain = 'brands.migobucks.com';
 
 export const getBaseApiUrl = (path?: string) => {
   if (hostname === applicationDomain && isProduction) {
