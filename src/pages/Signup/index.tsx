@@ -44,58 +44,6 @@ const CheckboxLink = styled(Link)({
   fontSize: '14px',
 });
 
-// <Box>
-//   <Grid container spacing={2}>
-//     <Grid item xs={12} sm={6} md={4}>
-//       <FormBox>
-//         <StyledBlueHeading variant="h3">
-//           Welcome to
-//           {' '}
-//           <br />
-//           Migobucks Brands
-//         </StyledBlueHeading>
-//         <InputBox>
-//           <FormControl variant="standard" sx={{ width: '25ch' }}>
-//             <InputLabel htmlFor="name">Name</InputLabel>
-//             <Input id="name" />
-//           </FormControl>
-//         </InputBox>
-//         <InputBox>
-//           <FormControl variant="standard" sx={{ width: '25ch' }}>
-//             <InputLabel htmlFor="number">Mobile Number</InputLabel>
-//             <Input id="number" />
-//           </FormControl>
-//         </InputBox>
-//         <InputBox>
-//           <FormControl variant="standard" sx={{ width: '25ch' }}>
-//             <InputLabel htmlFor="email">Email</InputLabel>
-//             <Input id="email" />
-//           </FormControl>
-//         </InputBox>
-//         <InputBox>
-//           <FormControl variant="standard" sx={{ width: '25ch' }}>
-//             <InputLabel htmlFor="brand-name">Brand Name</InputLabel>
-//             <Input id="brand-name" />
-//           </FormControl>
-//         </InputBox>
-//         <InputBox>
-//           <FormControl variant="standard" sx={{ width: '25ch' }}>
-//             <InputLabel htmlFor="password">Password</InputLabel>
-//             <Input id="password" />
-//           </FormControl>
-//         </InputBox>
-//         <InputBox>
-//           <FormGroup>
-//             <FormControlLabel control={<Checkbox />} label="Accept our Terms and services" />
-//           </FormGroup>
-//           <LongButton variant="contained">Signup</LongButton>
-//         </InputBox>
-//       </FormBox>
-//     </Grid>
-//     <Grid item sm={6} md={8}>
-//       <ImageBox>
-//         <img src={animatedImage} width={800} height={650} alt="abc" />
-//       </ImageBox>
 const SignupPage: React.FC = () => {
   const dispatch = useAppDispatch();
 
