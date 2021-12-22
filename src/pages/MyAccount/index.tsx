@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import CheckIcon from '@mui/icons-material/Check';
 import BussinessOverview from '../../components/MyAccount/BussinessOverview';
 import Layout from '../../components/Dashboard/Layout';
 
@@ -11,6 +12,9 @@ export interface TabPanelProps {
   index: number;
   value: number;
 }
+const commonStyles = {
+  flexGrow: 1, bgcolor: 'background.paper', display: 'flex', width: 1281, height: 773, border: 0, boxShadow: 3, background: '#F5F5F5', ml: '120px', mt: '120px',
+};
 
 function TabPanel(props: TabPanelProps) {
   const {
@@ -42,18 +46,24 @@ const MyAccount: React.FC = () => {
   return (
     <Box
       sx={{
-        flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224,
+        ...commonStyles,
       }}
     >
       <Tabs
         orientation="vertical"
-        variant="scrollable"
+        // variant="standard"
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label="Contact Details" />
+        {/* <Typography variant="h3"> */}
+        <h1>KYC Form</h1>
+        {/* </Typography> */}
+        <Typography variant="h5">
+          Complete and submit the form to accept payments.
+        </Typography>
+        <Tab label="Contact Details" sx={{ background: '#F5F5F5' }} />
         <Tab label="BussinessOverview" />
         <Tab label="Item Three" />
         <Tab label="Item Four" />
@@ -61,8 +71,8 @@ const MyAccount: React.FC = () => {
         <Tab label="Item Six" />
         <Tab label="Item Seven" />
       </Tabs>
-      <TabPanel value={value} index={0} />
-      <TabPanel value={value} index={1}>
+      {/* <TabPanel value={value} index={0} /> */}
+      <TabPanel value={value} index={3}>
         <BussinessOverview />
       </TabPanel>
     </Box>
