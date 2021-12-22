@@ -17,28 +17,37 @@ import animatedImage from '../../assets/images/login-animated-image.gif';
 
 const StyledBlueHeading = styled(Typography)({
   color: '#000000',
+  fontWeight: '600',
 });
-
+const Logo = styled('img')({
+  width: '50px',
+  padding: '50px 0 0 50px',
+});
 const LongButton = styled(Button)({
   width: '270px',
   marginTop: '10px',
 });
 const ImageBox = styled(Box)({
-  marginTop: '30px',
+  float: 'right',
+  paddingRight: '100px',
 });
 const InputBox = styled(Box)({
-  padding: '10px',
+  padding: '10px 0',
 });
 const FormBox = styled(Box)({
-  marginLeft: '150px',
-  marginTop: '60px',
+  marginLeft: '250px',
+  marginTop: '200px',
 });
-
 const SizedBox = styled(Box)({
   margin: '20px 0px',
 });
 const CheckboxLink = styled(Link)({
   fontSize: '14px',
+});
+const SignUpLink = styled(Link)({
+  textAlign: 'center',
+  fontSize: '13px',
+  fontWeight: '600',
 });
 
 const LoginPage: React.FC = () => {
@@ -55,16 +64,15 @@ const LoginPage: React.FC = () => {
   //     password,
   //   }));
   // }, []);
-
   return (
     <Box>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6} md={4}>
           <FormBox sx={{ marginLeft: breakPointMobile ? '45px' : '150px' }}>
-            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '35px' }}>
+            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '25px' }}>
               Welcome to
             </StyledBlueHeading>
-            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '35px' }}>Migobucks Brands</StyledBlueHeading>
+            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '25px' }}>Migobucks Brands</StyledBlueHeading>
             <SizedBox />
             <InputBox>
               <FormControl variant="standard" sx={{ width: '25ch' }}>
@@ -78,17 +86,20 @@ const LoginPage: React.FC = () => {
                 <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="input-password" required />
               </FormControl>
             </InputBox>
-            <Checkbox size="small" />
-            <CheckboxLink to="/"> Accept our Terms and services </CheckboxLink>
+            <Checkbox size="small" style={{ padding: '9px 9px 9px 0 ' }} />
+            <span style={{ fontSize: '14px', fontWeight: '500' }}>Accept our</span>
+            <CheckboxLink to="/"> Terms and services </CheckboxLink>
             <LongButton variant="contained">Signin</LongButton>
+            <SizedBox />
+            <span style={{ fontSize: '13px', fontWeight: '600', paddingRight: '9px' }}>Not have an account? </span>
+            <SignUpLink to="/"> Signup Now </SignUpLink>
           </FormBox>
         </Grid>
         {!breakPointMobile && (
           <Grid item xs={8}>
             <ImageBox>
-              <img src={animatedImage} width={900} height={600} alt="abc" />
+              <img src={animatedImage} width={720} height={720} alt="abc" />
             </ImageBox>
-
           </Grid>
         )}
       </Grid>
