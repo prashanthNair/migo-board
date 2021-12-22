@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import CheckIcon from '@mui/icons-material/Check';
 import BussinessOverview from '../../components/MyAccount/BussinessOverview';
 import Layout from '../../components/Dashboard/Layout';
+import BusinessDetails from '../../components/MyAccount/businessDetails';
 
 export interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,15 +66,14 @@ const MyAccount: React.FC = () => {
         </Typography>
         <Tab label="Contact Details" sx={{ background: '#F5F5F5' }} />
         <Tab label="BussinessOverview" />
-        <Tab label="Item Three" />
-        <Tab label="Item Four" />
-        <Tab label="Item Five" />
-        <Tab label="Item Six" />
-        <Tab label="Item Seven" />
+        <Tab label="Bussiness Details" />
       </Tabs>
       {/* <TabPanel value={value} index={0} /> */}
       <TabPanel value={value} index={3}>
         <BussinessOverview />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <BusinessDetails />
       </TabPanel>
     </Box>
   );
