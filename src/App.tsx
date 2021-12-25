@@ -11,7 +11,7 @@ import Layout from './components/Dashboard/Layout';
 
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
-import SideBar from './components/Dashboard/Sidebar';
+import SideBar from './components/Dashboard/Sidebar/index';
 import Nav from './components/Dashboard/Nav';
 import Inventory from './pages/Inventary/Index';
 import AddProduct from './pages/Inventary/AddProduct';
@@ -25,7 +25,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={muiTheme}>
       <CssBaseline />
-      <AddProduct />
+      {elements}
     </ThemeProvider>
   );
 };

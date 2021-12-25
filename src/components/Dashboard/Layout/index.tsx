@@ -4,43 +4,49 @@ import Grid, { GridSize } from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 
 import Nav from '../Nav';
-import SideBar from '../Sidebar';
+import SideBar from '../Sidebar/index';
+// import SelectedListItem from '../Sidebar/index';
 
 const Layout: React.FC = (props) => {
   const { children } = props;
 
   const [sidebarActive, setSidebarActive] = useState<boolean>(true);
 
-  const sidebarWidth: GridSize = useMemo<GridSize>(() => (
-    sidebarActive ? 2 as GridSize : 1 as GridSize
-  ), [sidebarActive]);
+  const sidebarWidth: GridSize = useMemo<GridSize>(
+    () => (sidebarActive ? (2 as GridSize) : (1 as GridSize)),
+    [sidebarActive],
+  );
 
-  const contentWidth: GridSize = useMemo<GridSize>(() => (
-    12 - Number(sidebarWidth.toString())
-  ) as GridSize, [sidebarWidth]);
+  const contentWidth: GridSize = useMemo<GridSize>(
+    () => (12 - Number(sidebarWidth.toString())) as GridSize,
+    [sidebarWidth],
+  );
 
   const navbarHeight = useMemo(() => '10vh', []);
 
-  const ContentContainer = styled(Box)(
-    () => ({
-      backgroundColor: '#E5E5E5',
-      height: `calc(100vh - ${navbarHeight})`,
-      overflow: 'auto',
-    }),
-  );
+  const ContentContainer = styled(Box)(() => ({
+    backgroundColor: '#E5E5E5',
+    height: `calc(100vh - ${navbarHeight})`,
+    overflow: 'auto',
+  }));
 
-  const handleSidebarToggle = useCallback(() => setSidebarActive(!sidebarActive), [sidebarActive]);
+  const handleSidebarToggle = useCallback(
+    () => setSidebarActive(!sidebarActive),
+    [sidebarActive],
+  );
+  const onDashboardClick = () => {
+    alert('daSHBOARD');
+  };
 
   return (
     <Grid container id="dashboard-layout-box">
       <Grid xs={sidebarWidth} item id="dashboard-sidebar">
-        <SideBar onSidebarToggle={handleSidebarToggle} />
+        {/* <SelectedListItem /> */}
+        <SideBar onSidebarToggle={onDashboardClick} />
       </Grid>
       <Grid xs={contentWidth} item id="dashboard-content">
         <Nav height={navbarHeight} />
-        <ContentContainer>
-          { children }
-        </ContentContainer>
+        <ContentContainer>{children}</ContentContainer>
       </Grid>
     </Grid>
   );

@@ -3,11 +3,13 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import { DashboardCustomize } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
-const SidebarItems = styled(Box)({
+const SidebarItem = styled(Box)({
   display: 'flex',
   color: '#2b2b2b',
   padding: '10px',
+  cursor: 'pointer',
 });
 const IconBox = styled(Box)({
   fontSize: '5px',
@@ -16,12 +18,27 @@ const SideBarText = styled(Typography)({
   paddingLeft: '30px',
 });
 
-const SideBarItem = () => (
-  <SidebarItems>
-    <IconBox><DashboardCustomize /></IconBox>
-    <SideBarText>Dashboard</SideBarText>
-  </SidebarItems>
+function SideBarItems() {
+  const navigate = useNavigate();
+  const handleMenuClick = () => {
+    navigate('/inventory');
+  };
+  return (
+    <div>
+      <SidebarItem>
+        <IconBox>
+          <DashboardCustomize />
+        </IconBox>
+        <SideBarText>Dashboard</SideBarText>
+      </SidebarItem>
+      <SidebarItem onClick={handleMenuClick}>
+        <IconBox>
+          <DashboardCustomize />
+        </IconBox>
+        <SideBarText>Inventory</SideBarText>
+      </SidebarItem>
+    </div>
+  );
+}
 
-);
-
-export default SideBarItem;
+export default SideBarItems;
