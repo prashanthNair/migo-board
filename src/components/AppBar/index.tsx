@@ -177,7 +177,7 @@ export default function Header() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Brand Name Here!!
           </Typography>
           <Search>
             <SearchIconWrapper>
