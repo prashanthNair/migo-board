@@ -171,14 +171,6 @@ export default function Header() {
             sx={{ mr: 2 }}
           />
 
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            Brand Name Here!!
-          </Typography>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -188,6 +180,15 @@ export default function Header() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+          <Typography
+            variant="h6"
+            noWrap
+            color="#494949"
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            Brand Name Here!!
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
