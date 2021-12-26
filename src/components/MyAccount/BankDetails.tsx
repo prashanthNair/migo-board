@@ -62,7 +62,6 @@ const BankDetails: React.FC = () => {
               <TextField
                 id="AccountHolderame"
                 label="Account Holderame"
-                type="number"
                 value={accountholderame}
                 onChange={(e) => setaccountholderame(e.target.value)}
                 placeholder="Account Holderame"
@@ -73,7 +72,6 @@ const BankDetails: React.FC = () => {
               <TextField
                 id="Branch Ifsc Code"
                 label="Branch Ifsc Code"
-                type="number"
                 value={branchifsccode}
                 onChange={(e) => setbranchifsccode(e.target.value)}
                 placeholder="Branch Ifsc Code"
@@ -84,7 +82,6 @@ const BankDetails: React.FC = () => {
               <TextField
                 id="Account Number"
                 label="Account Number"
-                type="number"
                 value={accountnumber}
                 onChange={(e) => setaccountnumber(e.target.value)}
                 placeholder="Account Number"

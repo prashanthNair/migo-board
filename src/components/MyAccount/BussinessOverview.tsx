@@ -64,7 +64,6 @@ const BussinessOverview: React.FC = () => {
                 value={category}
                 onChange={(e) => setcategory(e.target.value)}
                 label="Bussiness Category"
-                type="number"
                 placeholder="Bussiness Category"
                 required
               />
@@ -75,7 +74,6 @@ const BussinessOverview: React.FC = () => {
                 value={businessdescription}
                 onChange={(e) => setbusinessdescription(e.target.value)}
                 label="Bussiness Description"
-                type="number"
                 placeholder="Bussiness Description"
                 required
               />
@@ -86,7 +84,6 @@ const BussinessOverview: React.FC = () => {
                 value={website}
                 onChange={(e) => setwebsite(e.target.value)}
                 label="Bussiness Website"
-                type="number"
                 placeholder="Bussiness Website"
                 required
               />
