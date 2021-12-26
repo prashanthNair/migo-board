@@ -20,18 +20,15 @@ const SideBarText = styled(Typography)({
 
 function SideBarItems() {
   const navigate = useNavigate();
-  const handleMenuClick = () => {
-    navigate('/inventory');
-  };
   return (
     <div>
       <SidebarItem>
         <IconBox>
           <DashboardCustomize />
         </IconBox>
-        <SideBarText>Dashboard</SideBarText>
+        <SideBarText onClick={() => { navigate('/dashboard'); }}>Dashboard</SideBarText>
       </SidebarItem>
-      <SidebarItem onClick={handleMenuClick}>
+      <SidebarItem onClick={() => { navigate('/inventory'); }}>
         <IconBox>
           <DashboardCustomize />
         </IconBox>

@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useAppDispatch } from '../../redux/hooks';
 import loginImage from '../../assets/images/login.png';
 
-import { BrandState, createAccountSessionThunk } from '../../redux/slices/brandOnboarding';
+import { BrandState, createAccountSessionThunk } from '../../redux/slices/brand';
 
 const StyledBlueHeading = styled(Typography)({
   color: '#000000',

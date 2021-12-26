@@ -1,5 +1,5 @@
 import { onboardApiInstance } from '../../api';
-import { AccountInfo } from '../../redux/slices/brandOnboarding';
+import { AccountInfo } from '../../redux/slices/brand';
 
 export interface IBrandInfoSessionPayload {
   name?: string;

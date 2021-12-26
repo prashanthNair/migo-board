@@ -16,7 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '../../redux/hooks';
-import { BrandState, createSessionThunk, getBrandInfoThunk } from '../../redux/slices/brandOnboarding';
+import { BrandState, createSessionThunk, getBrandInfoThunk } from '../../redux/slices/brand';
 
 import siginupImage from '../../assets/images/signup.png';
 import { RootState } from '../../redux/store';

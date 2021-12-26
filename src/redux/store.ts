@@ -2,7 +2,7 @@ import { configureStore, createStore } from '@reduxjs/toolkit';
 
 // Reducers
 import themeReducer from './slices/theme';
-import onboardingReducer from './slices/brandOnboarding';
+import onboardingReducer from './slices/brand';
 // import reducers from './reducers';
 
 export const store = configureStore({
