@@ -16,3 +16,12 @@ export const getBaseApiUrl = (path?: string) => {
 export const onboardApiInstance = axios.create({
   baseURL: getBaseApiUrl('brand'),
 });
+
+export const kycApiInstance = axios.create({
+  baseURL: getBaseApiUrl('brand/businessDetails'),
+});
+
+// BrandId in PathParam
+export const kycbankApiInstance = axios.create({
+  baseURL: getBaseApiUrl('brand/bankdetails/'),
+});

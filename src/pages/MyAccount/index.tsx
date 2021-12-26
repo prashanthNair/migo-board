@@ -4,8 +4,10 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CheckIcon from '@mui/icons-material/Check';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import BussinessOverview from '../../components/MyAccount/BussinessOverview';
 import Layout from '../../components/Dashboard/Layout';
+import BankDetails from '../../components/MyAccount/BankDetails';
 
 export interface TabPanelProps {
   children?: React.ReactNode;
@@ -63,16 +65,23 @@ const MyAccount: React.FC = () => {
         <Typography variant="h5">
           Complete and submit the form to accept payments.
         </Typography>
-        <Tab label="Contact Details" sx={{ background: '#F5F5F5' }} />
-        <Tab label="BussinessOverview" />
+
+        <Tab label="Contact Details" />
+
+        {/* <CheckCircleIcon> */}
+        <Tab label="BankDetails" />
+        {/* </CheckCircleIcon> */}
         <Tab label="Item Three" />
-        <Tab label="Item Four" />
+        <Tab label="BussinessOverview" />
         <Tab label="Item Five" />
         <Tab label="Item Six" />
         <Tab label="Item Seven" />
       </Tabs>
       {/* <TabPanel value={value} index={0} /> */}
       <TabPanel value={value} index={3}>
+        <BankDetails />
+      </TabPanel>
+      <TabPanel value={value} index={5}>
         <BussinessOverview />
       </TabPanel>
     </Box>

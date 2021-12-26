@@ -6,21 +6,21 @@ import Typography from '@mui/material/Typography';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Button from '@mui/material/Button';
 import { useAppDispatch } from '../../redux/hooks';
-import { createKycThunk } from '../../redux/slices/brand/kyc';
+import { createKycBankThunk } from '../../redux/slices/brand/bank';
 
-const BussinessOverview: React.FC = () => {
+const BankDetails: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const [businessname, setbusinessname] = useState<string>('');
-  const [category, setcategory] = useState<string>('');
-  const [businessdescription, setbusinessdescription] = useState<string>('');
-  const [website, setwebsite] = useState<string>('');
+  const [beneficiaryname, setbeneficiaryname] = useState<string>('');
+  const [accountholderame, setaccountholderame] = useState<string>('');
+  const [branchifsccode, setbranchifsccode] = useState<string>('');
+  const [accountnumber, setaccountnumber] = useState<string>('');
 
   const handleCreateSession = useCallback(() => {
-    debugger; // eslint-disable-line no-debugger
+    // debugger; // eslint-disable-line no-debugger
     dispatch(
-      createKycThunk({
-        businessname, category, businessdescription, website,
+      createKycBankThunk({
+        beneficiaryname, accountholderame, branchifsccode, accountnumber,
       }),
     );
   }, []);
@@ -33,7 +33,7 @@ const BussinessOverview: React.FC = () => {
   return (
     <div>
       <Typography variant="h5">
-        BUSINESS OVERVIEW
+        Bank Details
       </Typography>
       <form>
         <Box
@@ -48,46 +48,46 @@ const BussinessOverview: React.FC = () => {
           <Grid alignItems="center" direction="column">
             <Grid>
               <TextField
-                id="businessname"
-                name="Bussiness Name"
-                value={businessname}
-                onChange={(e) => setbusinessname(e.target.value)}
-                label="Bussiness Name"
+                id="name-input"
+                name="Beneficiary Name"
+                label="Beneficiary Name"
                 placeholder="Bussiness Name"
+                value={beneficiaryname}
+                onChange={(e) => setbeneficiaryname(e.target.value)}
                 type="text"
                 required
               />
             </Grid>
             <Grid>
               <TextField
-                id="Bussiness Category"
-                value={category}
-                onChange={(e) => setcategory(e.target.value)}
-                label="Bussiness Category"
+                id="AccountHolderame"
+                label="Account Holderame"
                 type="number"
-                placeholder="Bussiness Category"
+                value={accountholderame}
+                onChange={(e) => setaccountholderame(e.target.value)}
+                placeholder="Account Holderame"
                 required
               />
             </Grid>
             <Grid>
               <TextField
-                id="businessdescription"
-                value={businessdescription}
-                onChange={(e) => setbusinessdescription(e.target.value)}
-                label="Bussiness Description"
+                id="Branch Ifsc Code"
+                label="Branch Ifsc Code"
                 type="number"
-                placeholder="Bussiness Description"
+                value={branchifsccode}
+                onChange={(e) => setbranchifsccode(e.target.value)}
+                placeholder="Branch Ifsc Code"
                 required
               />
             </Grid>
             <Grid>
               <TextField
-                id="website"
-                value={website}
-                onChange={(e) => setwebsite(e.target.value)}
-                label="Bussiness Website"
+                id="Account Number"
+                label="Account Number"
                 type="number"
-                placeholder="Bussiness Website"
+                value={accountnumber}
+                onChange={(e) => setaccountnumber(e.target.value)}
+                placeholder="Account Number"
                 required
               />
             </Grid>
@@ -101,4 +101,4 @@ const BussinessOverview: React.FC = () => {
   );
 };
 
-export default BussinessOverview;
+export default BankDetails;
