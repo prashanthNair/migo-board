@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+/* eslint-disable no-alert */
+import React, { useState, useCallback, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
@@ -11,12 +12,14 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '../../redux/hooks';
-import { createSessionThunk } from '../../redux/slices/brand';
+import { BrandState, createSessionThunk, getBrandInfoThunk } from '../../redux/slices/brandOnboarding';
 
-import animatedImage from '../../assets/images/signup-banner-animated.gif';
+import siginupImage from '../../assets/images/signup.png';
+import { RootState } from '../../redux/store';
 
 const StyledBlueHeading = styled(Typography)({
   color: '#000000',
@@ -41,35 +44,39 @@ const FormBox = styled(Box)({
 const SizedBox = styled(Box)({
   margin: '20px 0px',
 });
-const CheckboxLink = styled(Link)({
-  fontSize: '14px',
-});
-const SignUpLink = styled(Link)({
-  textAlign: 'center',
-  fontSize: '12px',
-  fontWeight: '600',
-  paddingLeft: '5px',
-});
 
 const SignupPage: React.FC = () => {
+  debugger; // eslint-disable-line no-debugger
   const dispatch = useAppDispatch();
-
-  const [fullName, setFullName] = useState<string>('');
-  const [fullNumber, setFullNumber] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [mobile, setMobile] = useState<string>('');
+  const [gstn, setGstn] = useState<string>('');
   const [brandName, setBrandName] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-
+  const navigate = useNavigate();
+  const brandState = useSelector((state: RootState) => state);
   const breakPointMobile = useMediaQuery('(max-device-width: 480px)');
+  const brandId = brandState.Onboarding?.accountInfo?.BrandId;
+  const email:string = brandState.Onboarding?.accountInfo?.EmailId || '';
 
-  const handleCreateSession = useCallback(() => {
-    dispatch(createSessionThunk({
-      fullName,
-      number: fullNumber,
-      email,
-      brandName,
-      password,
-    }));
+  const handleBrandInfo = async () => {
+    const brandinfo = await dispatch(
+      createSessionThunk({
+        brandId,
+        name,
+        mobile,
+        brandName,
+        gstn,
+      }),
+    );
+    if (brandinfo.payload) {
+      // eslint-disable-next-line no-console
+      console.log('brandinfo', brandinfo.payload);
+      navigate('/dashboard');
+    }
+  };
+
+  useEffect(() => {
+    const brandInfo = dispatch(getBrandInfoThunk(email));
   }, []);
 
   return (
@@ -77,55 +84,80 @@ const SignupPage: React.FC = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6} md={4}>
           <FormBox sx={{ marginLeft: breakPointMobile ? '40px' : '250px' }}>
-            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '25px' }}>
+            <StyledBlueHeading
+              variant="h3"
+              sx={{ fontSize: breakPointMobile ? '30px' : '25px' }}
+            >
               Welcome to
             </StyledBlueHeading>
-            <StyledBlueHeading variant="h3" sx={{ fontSize: breakPointMobile ? '30px' : '25px' }}>Migobucks Brands</StyledBlueHeading>
+            <StyledBlueHeading
+              variant="h3"
+              sx={{ fontSize: breakPointMobile ? '30px' : '25px' }}
+            >
+              Migobucks Brands
+            </StyledBlueHeading>
             <SizedBox />
             <InputBox>
               <FormControl variant="standard" sx={{ width: '25ch' }}>
                 <InputLabel htmlFor="input-fullname">Name</InputLabel>
-                <Input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} id="input-fullname" fullWidth />
+                <Input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  id="input-fullname"
+                  fullWidth
+                />
               </FormControl>
             </InputBox>
             <InputBox>
               <FormControl variant="standard" sx={{ width: '25ch' }}>
-                <InputLabel htmlFor="input-fullnumber">Mobile Number</InputLabel>
-                <Input value={fullNumber} onChange={(e) => setFullNumber(e.target.value)} id="input-fullnumber" />
-              </FormControl>
-            </InputBox>
-            <InputBox>
-              <FormControl variant="standard" sx={{ width: '25ch' }}>
-                <InputLabel htmlFor="input-email">Email</InputLabel>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="input-email" />
+                <InputLabel htmlFor="input-fullnumber">
+                  Mobile
+                </InputLabel>
+                <Input
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  id="input-fullnumber"
+                />
               </FormControl>
             </InputBox>
             <InputBox>
               <FormControl variant="standard" sx={{ width: '25ch' }}>
                 <InputLabel htmlFor="input-brand">Brand Name</InputLabel>
-                <Input type="text" value={brandName} onChange={(e) => setBrandName(e.target.value)} id="input-brand" />
+                <Input
+                  type="text"
+                  value={brandName}
+                  onChange={(e) => setBrandName(e.target.value)}
+                  id="input-brand"
+                />
               </FormControl>
             </InputBox>
             <InputBox>
               <FormControl variant="standard" sx={{ width: '25ch' }}>
-                <InputLabel htmlFor="input-passowrd">Password</InputLabel>
-                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="input-password" />
+                <InputLabel htmlFor="input-passowrd">GST Number</InputLabel>
+                <Input
+                  type="password"
+                  value={gstn}
+                  onChange={(e) => setGstn(e.target.value)}
+                  id="input-password"
+                />
               </FormControl>
             </InputBox>
-            <Checkbox size="small" style={{ padding: '9px 5px 9px 0 ' }} />
-            <CheckboxLink to="/"> Accept our Terms and services </CheckboxLink>
-            <LongButton onClick={handleCreateSession} type="submit" variant="contained">Signup</LongButton>
+            <LongButton
+              onClick={handleBrandInfo}
+              type="submit"
+              variant="contained"
+            >
+              Submit
+            </LongButton>
             <SizedBox />
-            <span style={{ fontSize: '12px', fontWeight: '600' }}>Already have an account? </span>
-            <SignUpLink to="/"> Signin Now</SignUpLink>
           </FormBox>
         </Grid>
         {!breakPointMobile && (
           <Grid item xs={8}>
             <ImageBox>
-              <img src={animatedImage} width={720} height={720} alt="abc" />
+              <img src={siginupImage} width={720} height={720} alt="abc" />
             </ImageBox>
-
           </Grid>
         )}
       </Grid>
