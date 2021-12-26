@@ -12,7 +12,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const [val, setVal] = useState<string>('');
 
   const SearchInputField = styled('input')(() => ({
-    background: '#FCFCFC',
+    background: '#ebebeb',
     border: 'none',
     borderRadius: '20px',
     padding: '15px 25px',

@@ -2,6 +2,8 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import SearchBar from '../../SearchBar';
+import Header from '../../AppBar';
 
 export interface NavProps {
     themeMode?: 'light' | 'dark';
@@ -20,17 +22,7 @@ const Nav: React.FC<NavProps> = (props) => {
 
   return (
     <NavContainer>
-      <Grid alignItems="center" container spacing={2}>
-        <Grid item xs={2}>
-          {/* <p>1</p> */}
-        </Grid>
-        <Grid item xs={6}>
-          {/* <p>2</p> */}
-        </Grid>
-        <Grid item xs={2}>
-          {/* <p>1</p> */}
-        </Grid>
-      </Grid>
+      <Header />
     </NavContainer>
   );
 };
