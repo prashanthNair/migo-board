@@ -2,14 +2,14 @@ import { configureStore, createStore } from '@reduxjs/toolkit';
 
 // Reducers
 import themeReducer from './slices/theme';
-import brandReducer from './slices/brand';
+import onboardingReducer from './slices/brand';
 // import reducers from './reducers';
 
 export const store = configureStore({
   // reducers,
   reducer: {
     theme: themeReducer,
-    brand: brandReducer,
+    Onboarding: onboardingReducer,
   },
 });
 

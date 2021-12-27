@@ -1,6 +1,10 @@
-import { createSlice, createSelector, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createSlice, createSelector, createAsyncThunk, PayloadAction,
+} from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { ICreateSessionPayload, createSession } from '../../../services/onboarding';
+import {
+  createAccountSession, createBrandInfo, getBrandInfo, IBrandInfoSessionPayload,
+} from '../../../services/onboarding';
 
 interface Address {
   Street: string;
@@ -35,31 +39,62 @@ export interface IBrand {
 export interface BrandState {
     data?: IBrand;
     updatedAt?: Date
+    accountInfo?: IBrand
 }
 
-// Thunks
-export const createSessionThunk = createAsyncThunk(
-  'createSession',
-  async (payload: ICreateSessionPayload) => {
-    const response = await createSession(payload);
+export interface AccountInfo{
+  email:string;
+  password:string;
+}
+
+const initialState: BrandState = { };
+
+export const createAccountSessionThunk = createAsyncThunk(
+  '/brand',
+  async (payload: AccountInfo) => {
+    const response = await createAccountSession(payload);
     return response;
   },
 );
 
-const initialState: BrandState = {};
+export const createSessionThunk = createAsyncThunk(
+  '/{BrandId}/brandinfo',
+  async (payload: IBrandInfoSessionPayload) => {
+    const response = await createBrandInfo(payload);
+    return response;
+  },
+);
+
+export const getBrandInfoThunk = createAsyncThunk(
+  ' /brand/{emailId}',
+  async (emailId: string) => {
+    const response = await getBrandInfo(emailId);
+    return response;
+  },
+);
 
 const brandSlice = createSlice({
   name: 'brands',
   initialState,
   reducers: {
-
+  },
+  extraReducers: (builder) => {
+    builder.addCase(createAccountSessionThunk.fulfilled, (state, action) => {
+      state.accountInfo = action.payload;
+    });
+    builder.addCase(createSessionThunk.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
+    builder.addCase(getBrandInfoThunk.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
   },
 });
 
 // Selectors
 const getCurrentBrand = createSelector(
-  (state: RootState) => state.brand,
-  (brand) => brand,
+  (state: RootState) => state.Onboarding,
+  (Onboarding) => Onboarding,
 );
 
 export default brandSlice.reducer;

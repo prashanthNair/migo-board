@@ -34,6 +34,8 @@ const Search = styled('div')(({ theme }) => ({
 
 const CustomAppBar = styled(AppBar)(({ theme }) => ({
   background: theme.palette.common.white,
+  height: 70,
+  boxShadow: 'none',
 }));
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -48,6 +50,11 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'black',
+  backgroundColor: '#FCFCFC',
+  borderWidth: 1,
+  borderStyle: 'solid',
+  borderColor: '#FCFCFC',
+  borderRadius: 10,
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -171,14 +178,6 @@ export default function Header() {
             sx={{ mr: 2 }}
           />
 
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            Brand Name Here!!
-          </Typography>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -188,6 +187,7 @@ export default function Header() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">

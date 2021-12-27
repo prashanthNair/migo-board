@@ -1,30 +1,51 @@
 import { onboardApiInstance } from '../../api';
+import { AccountInfo } from '../../redux/slices/brand';
 
-export interface ICreateSessionPayload {
-  fullName: string;
-  number: string;
-  email: string;
-  brandName: string;
-  password: string
+export interface IBrandInfoSessionPayload {
+  name?: string;
+  mobile?: string;
+  brandName?: string;
+  gstn?: string
+  brandId?:string
 }
+export const createAccountSession = async (payload: AccountInfo) => {
+  const {
+    email, password,
+  } = payload;
+  const reqParam = {
+    EmailId: email,
+    Password: password,
+  };
+
+  const { data } = await onboardApiInstance.post('/', reqParam);
+  debugger;// eslint-disable-line no-debugger
+  // data = JSON.parse(data);
+
+  const brandObj = JSON.parse(data.body);
+  return brandObj;
+};
 
 export const getBrandDetails = async (brandId: string) => {
   const { data } = await onboardApiInstance.get(`/${brandId}`);
 };
 
-export const createSession = async (payload: ICreateSessionPayload) => {
+export const createBrandInfo = async (payload: IBrandInfoSessionPayload) => {
   const {
-    email, number, brandName, password, fullName,
+    mobile, brandName, gstn, name, brandId,
   } = payload;
   const reqParam = {
-    EmailId: email,
-    PhoneNumber: number,
+    Name: name,
+    Mobile: mobile,
     BrandName: brandName,
-    AccountPassword: password,
-    UserName: fullName,
+    GSTN: gstn,
   };
+  const { data } = await onboardApiInstance.patch(`/${brandId}/brandinfo`, reqParam);
+  console.log('DATA', data);
+  return data;
+};
 
-  const { data } = await onboardApiInstance.post('/', reqParam);
+export const getBrandInfo = async (emailId:string) => {
+  const { data } = await onboardApiInstance.get(`/BrandDetails/${emailId}`);
   console.log('DATA', data);
   return data;
 };
