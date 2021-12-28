@@ -29,7 +29,7 @@ function SideBarItems() {
           <DashboardCustomize />
         </IconBox>
         <LinearProgress variant="determinate" onClick={() => { navigate('/MyAccount'); }} />
-        <SideBarText onClick={() => { navigate('/MyAccount'); }}>Dashboard</SideBarText>
+        <SideBarText onClick={() => { navigate('/MyAccount'); }}>Kyc</SideBarText>
       </SidebarItem>
       <SidebarItem>
         <IconBox>
