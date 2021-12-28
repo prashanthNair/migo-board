@@ -22,6 +22,6 @@ export const kycApiInstance = axios.create({
 });
 
 // BrandId in PathParam
-export const kycbankApiInstance = axios.create({
-  baseURL: getBaseApiUrl('brand/bankdetails/'),
-});
+// export const kycbankApiInstance = axios.create({
+//   baseURL: getBaseApiUrl('brand/bankdetails/'),
+// });

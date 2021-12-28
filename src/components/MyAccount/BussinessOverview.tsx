@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Button from '@mui/material/Button';
 import { useAppDispatch } from '../../redux/hooks';
-import { createKycThunk } from '../../redux/slices/brand/kyc';
 
 const BussinessOverview: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -15,15 +14,6 @@ const BussinessOverview: React.FC = () => {
   const [category, setcategory] = useState<string>('');
   const [businessdescription, setbusinessdescription] = useState<string>('');
   const [website, setwebsite] = useState<string>('');
-
-  const handleCreateSession = useCallback(() => {
-    debugger; // eslint-disable-line no-debugger
-    dispatch(
-      createKycThunk({
-        businessname, category, businessdescription, website,
-      }),
-    );
-  }, []);
 
   const handleSubmit = () => {
     // event.preventDefault();
@@ -88,7 +78,7 @@ const BussinessOverview: React.FC = () => {
                 required
               />
             </Grid>
-            <Button variant="contained" onClick={handleCreateSession} color="primary" type="submit">
+            <Button variant="contained" color="primary" type="submit">
               save
             </Button>
           </Grid>

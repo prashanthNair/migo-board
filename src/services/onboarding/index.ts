@@ -8,6 +8,14 @@ export interface IBrandInfoSessionPayload {
   gstn?: string
   brandId?:string
 }
+
+export interface IBankInfoPayload {
+  beneficiaryname?: string;
+  accountholderame?: string;
+  branchifsccode?: string;
+  accountnumber?: string;
+  BrandId?:string;
+}
 export const createAccountSession = async (payload: AccountInfo) => {
   const {
     email, password,
@@ -46,6 +54,21 @@ export const createBrandInfo = async (payload: IBrandInfoSessionPayload) => {
 
 export const getBrandInfo = async (emailId:string) => {
   const { data } = await onboardApiInstance.get(`/BrandDetails/${emailId}`);
+  console.log('DATA', data);
+  return data;
+};
+
+export const createKycBankSession = async (payload: IBankInfoPayload) => {
+  const {
+    beneficiaryname, accountholderame, branchifsccode, accountnumber, BrandId,
+  } = payload;
+  const reqParam = {
+    BeneficiaryName: beneficiaryname,
+    AccountHolderame: accountholderame,
+    BranchIfscCode: branchifsccode,
+    AccountNumber: accountnumber,
+  };
+  const { data } = await onboardApiInstance.patch(`/bankdetails/${BrandId}`, reqParam);
   console.log('DATA', data);
   return data;
 };
