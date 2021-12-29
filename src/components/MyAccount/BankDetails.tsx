@@ -23,7 +23,7 @@ const BankDetails: React.FC = () => {
   const BrandId = brandState.Onboarding?.accountInfo?.BrandId;
 
   const handleCreateSession = async () => {
-    // debugger; // eslint-disable-line no-debugger
+    debugger; // eslint-disable-line no-debugger
     const bankinfo = await dispatch(
       createKycBankThunk({
         beneficiaryname, accountholderame, branchifsccode, accountnumber, BrandId,
@@ -47,7 +47,6 @@ const BankDetails: React.FC = () => {
         Bank Details
       </Typography>
       <Box
-        component="form"
         sx={{
           '& .MuiTextField-root': { m: 2, width: '25ch' },
         }}

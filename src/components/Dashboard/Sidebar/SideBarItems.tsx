@@ -24,12 +24,12 @@ function SideBarItems() {
   const navigate = useNavigate();
   return (
     <div>
-      <SidebarItem>
+      <SidebarItem onClick={() => { navigate('/MyAccount'); }}>
         <IconBox>
           <DashboardCustomize />
         </IconBox>
-        <LinearProgress variant="determinate" onClick={() => { navigate('/MyAccount'); }} />
-        <SideBarText onClick={() => { navigate('/MyAccount'); }}>Kyc</SideBarText>
+        {/* <LinearProgress variant="determinate" onClick={() => { navigate('/MyAccount'); }} /> */}
+        <SideBarText>Kyc</SideBarText>
       </SidebarItem>
       <SidebarItem>
         <IconBox>

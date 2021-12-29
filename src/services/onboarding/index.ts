@@ -63,10 +63,12 @@ export const createKycBankSession = async (payload: IBankInfoPayload) => {
     beneficiaryname, accountholderame, branchifsccode, accountnumber, BrandId,
   } = payload;
   const reqParam = {
-    BeneficiaryName: beneficiaryname,
-    AccountHolderame: accountholderame,
-    BranchIfscCode: branchifsccode,
-    AccountNumber: accountnumber,
+    BankDetails: {
+      BeneficiaryName: beneficiaryname,
+      AccountHolderame: accountholderame,
+      BranchIfscCode: branchifsccode,
+      AccountNumber: accountnumber,
+    },
   };
   const { data } = await onboardApiInstance.patch(`/bankdetails/${BrandId}`, reqParam);
   console.log('DATA', data);

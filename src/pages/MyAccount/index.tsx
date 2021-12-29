@@ -58,7 +58,7 @@ const MyAccount: React.FC = () => {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        sx={{ borderRight: 1, borderColor: 'divider', color: '#000000' }}
       >
         {/* <Typography variant="h3"> */}
         <h1>KYC Form</h1>
@@ -66,7 +66,7 @@ const MyAccount: React.FC = () => {
         <Typography variant="h5">
           Complete and submit the form to accept payments.
         </Typography>
-        <Tab label="Bank Details" sx={{ background: '#F5F5F5' }} />
+        <Tab label="Bank Details" sx={{ background: '#FFFFFF' }} />
         <Tab label="Contact Details" sx={{ background: '#F5F5F5' }} />
         <Tab label="BussinessOverview" />
         <Tab label="Bussiness Details" />
