@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
-import DashboardCustomizeIcon from '@mui/icons-material/Dashboard';
 import SideBarItem from './SideBarItems';
 
 interface SideBarProps {

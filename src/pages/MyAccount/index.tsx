@@ -3,10 +3,11 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import CheckIcon from '@mui/icons-material/Check';
-import BussinessOverview from '../../components/MyAccount/BussinessOverview';
-import Layout from '../../components/Dashboard/Layout';
-import BusinessDetails from '../../components/MyAccount/businessDetails';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import { Button, styled } from '@mui/material';
+import { width } from '@mui/system';
+import BussinessOverview from '../../components/MyAccount/businessDetails';
+import BusinessDetails from '../../components/MyAccount/bussinessOverview.';
 
 export interface TabPanelProps {
   children?: React.ReactNode;
@@ -14,8 +15,31 @@ export interface TabPanelProps {
   value: number;
 }
 const commonStyles = {
-  flexGrow: 1, bgcolor: 'background.paper', display: 'flex', width: 1281, height: 773, border: 0, boxShadow: 3, background: '#F5F5F5', ml: '120px', mt: '120px',
+  display: 'flex',
+  border: 0,
+  boxShadow: 3,
+  width: '90%',
+  m: 2,
+  ml: 8,
+  height: 800,
 };
+
+const CustomTab = styled(Tab)({
+  flexDirection: 'row',
+});
+
+const Done = styled(CheckCircleRoundedIcon)({
+  marginTop: 5,
+  marginRight: 10,
+  alignItems: 'flex-start',
+  color: 'green',
+});
+const NotDone = styled(CheckCircleRoundedIcon)({
+  marginTop: 5,
+  marginRight: 10,
+  alignItems: 'flex-start',
+  color: 'grey',
+});
 
 function TabPanel(props: TabPanelProps) {
   const {
@@ -52,29 +76,24 @@ const MyAccount: React.FC = () => {
     >
       <Tabs
         orientation="vertical"
-        // variant="standard"
         value={value}
         onChange={handleChange}
-        aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        {/* <Typography variant="h3"> */}
-        <h1>KYC Form</h1>
-        {/* </Typography> */}
-        <Typography variant="h5">
-          Complete and submit the form to accept payments.
+        <Typography variant="h5" style={{ marginLeft: 50 }}>
+          <h5>KYC Form</h5>
         </Typography>
-        <Tab label="Contact Details" sx={{ background: '#F5F5F5' }} />
-        <Tab label="BussinessOverview" />
-        <Tab label="Bussiness Details" />
+        <CustomTab icon={<Done />} label="    Contact Details" />
+        <CustomTab icon={<NotDone />} label="Bussiness Details" />
+        <CustomTab icon={<NotDone />} label="BussinessOverview" />
       </Tabs>
-      {/* <TabPanel value={value} index={0} /> */}
-      <TabPanel value={value} index={3}>
-        <BussinessOverview />
-      </TabPanel>
       <TabPanel value={value} index={2}>
         <BusinessDetails />
       </TabPanel>
+      <TabPanel value={value} index={3}>
+        <BussinessOverview />
+      </TabPanel>
+
     </Box>
   );
 };

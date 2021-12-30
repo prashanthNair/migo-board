@@ -41,7 +41,6 @@ const Layout: React.FC = (props) => {
   return (
     <Grid container id="dashboard-layout-box">
       <Grid xs={sidebarWidth} item id="dashboard-sidebar">
-        {/* <SelectedListItem /> */}
         <SideBar onSidebarToggle={onDashboardClick} />
       </Grid>
       <Grid xs={contentWidth} item id="dashboard-content">

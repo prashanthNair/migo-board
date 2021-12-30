@@ -1,138 +1,87 @@
-import {
-  Button,
-  Checkbox,
-  Container,
-  CssBaseline,
-  FormControlLabel,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-}
-  from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
+import React, { useState } from 'react';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import NativeSelect from '@mui/material/NativeSelect';
+
+import Button from '@mui/material/Button';
+import { FormControl, styled } from '@mui/material';
 
 const BusinessDetails: React.FC = () => {
   const handleSubmit = () => {
     // event.preventDefault();
     console.log('formValues');
   };
+
+  const InputBox = styled(TextField)({
+    height: 50,
+    color: 'blue',
+
+  });
   return (
     <div>
-      <Typography
-        component="h1"
-        variant="h3"
-        color="inherit"
-        noWrap
-        sx={{ flexGrow: 1 }}
+      <Box
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '25ch' },
+        }}
+        border-radius="8px"
+
       >
-        BUSINESS DETAILS
-      </Typography>
-      <Container component="main">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
+        <Grid alignItems="center" direction="column">
+          <Grid>
+            <InputBox
+              id="name-input"
+              name="Bussiness Name"
+              label="Bussiness Name"
+              placeholder="Bussiness Name"
+              type="text"
+              variant="standard"
+              required
+            />
+          </Grid>
+          <Grid>
+            <FormControl variant="standard" sx={{ ml: 1, mb: 2, width: '100%' }}>
+              <InputLabel>Bussiness Category</InputLabel>
+              <Select
+                placeholder="Bussiness Category"
+                label="Age"
+                variant="standard"
+                sx={{ width: '100%' }}
+              />
+            </FormControl>
+          </Grid>
+          <Grid>
+            <InputBox
+              label="Bussiness Description"
+              type="text"
+              variant="standard"
+              placeholder="Bussiness Description"
+              required
+            />
+          </Grid>
+          <Grid>
+            <InputBox
+              id="age-input"
+              label="Bussiness Website"
+              type="number"
+              variant="standard"
+              value="demo"
+              placeholder="Bussiness Website"
+              required
+            />
+          </Grid>
+        </Grid>
+        <div style={{
+          display: 'flex', flexDirection: 'row', marginTop: 40, justifyContent: 'center',
+        }}
         >
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <Container component="main" maxWidth="sm">
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="businessPAN"
-                label="Business PAN"
-                name="businessPAN"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="businessName"
-                label="Business Name"
-                name="businessName"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="PANOwnerName"
-                label="PAN Owner’s Name"
-                name="PANOwnerName"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="billlingName"
-                label="Billling Name"
-                name="billlingName"
-              />
-              <TextField
-                margin="normal"
-                required
-                multiline
-                rows={4}
-                fullWidth
-                id="adderss"
-                label="Adderss"
-                name="adderss"
-                autoComplete="address"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="pincode"
-                label="Pincode"
-                name="pincode"
-                autoComplete="pincode"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="city"
-                label="City"
-                name="city"
-                autoComplete="city"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="state"
-                label="State"
-                name="state"
-                autoComplete="state"
-              />
-            </Container>
-            <Grid container spacing={2}>
-              <Grid item xs={6} md={8}>
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="I agree to Migobucks"
-                />
-                <Link href="True">Terms and services</Link>
-              </Grid>
-              <Grid item xs={6} md={4}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Submit & Verify
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-      </Container>
+          <Button variant="outlined" style={{ width: 100 }}>Save</Button>
+        </div>
+      </Box>
     </div>
   );
 };
