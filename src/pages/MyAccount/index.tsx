@@ -3,11 +3,20 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+<<<<<<< HEAD
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import { Button, styled } from '@mui/material';
 import { width } from '@mui/system';
 import BussinessOverview from '../../components/MyAccount/businessDetails';
 import BusinessDetails from '../../components/MyAccount/bussinessOverview.';
+=======
+import CheckIcon from '@mui/icons-material/Check';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import BussinessOverview from '../../components/MyAccount/BussinessOverview';
+import Layout from '../../components/Dashboard/Layout';
+import BankDetails from '../../components/MyAccount/BankDetails';
+import BusinessDetails from '../../components/MyAccount/businessDetails';
+>>>>>>> b986218df7a55b335a90e9e487522d9fae625882
 
 export interface TabPanelProps {
   children?: React.ReactNode;
