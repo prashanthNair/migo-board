@@ -5,33 +5,33 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../redux/hooks';
-import { createKycBusinessOverviewThunk } from '../../redux/slices/brand';
+import { createKycBankThunk } from '../../redux/slices/brand';
 import { RootState } from '../../redux/store';
 
-const BussinessOverview: React.FC = () => {
+const BankDetails: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const [businessName, setbusinessName] = useState<string>('');
-  const [businessCategory, setbusinessCategory] = useState<string>('');
-  const [businessDiscription, setbusinessDiscription] = useState<string>('');
-  const [website, setwebsite] = useState<string>('');
+  const [beneficiaryname, setbeneficiaryname] = useState<string>('');
+  const [accountholderame, setaccountholderame] = useState<string>('');
+  const [branchifsccode, setbranchifsccode] = useState<string>('');
+  const [accountnumber, setaccountnumber] = useState<string>('');
   const navigate = useNavigate();
   const brandState = useSelector((state: RootState) => state);
   const BrandId = brandState.Onboarding?.accountInfo?.BrandId;
 
   const handleCreateSession = async () => {
     debugger; // eslint-disable-line no-debugger
-    const businessOverviewInfo = await dispatch(
-      createKycBusinessOverviewThunk({
-        website, businessDiscription, businessName, businessCategory, BrandId,
+    const bankinfo = await dispatch(
+      createKycBankThunk({
+        beneficiaryname, accountholderame, branchifsccode, accountnumber, BrandId,
       }),
     );
-    if (businessOverviewInfo.payload) {
+    if (bankinfo.payload) {
     // eslint-disable-next-line no-console
-      console.log('brandinfo', businessOverviewInfo.payload);
+      console.log('brandinfo', bankinfo.payload);
       navigate('/dashboard');
     }
   };
@@ -44,7 +44,7 @@ const BussinessOverview: React.FC = () => {
   return (
     <div>
       <Typography variant="h5">
-        BUSINESS OVERVIEW
+        Bank Details
       </Typography>
       <Box
         sx={{
@@ -57,47 +57,47 @@ const BussinessOverview: React.FC = () => {
         <Grid alignItems="center" direction="column">
           <Grid>
             <TextField
-              id="businessname"
-              name="Bussiness Name"
-              value={businessName}
-              onChange={(e) => setbusinessName(e.target.value)}
-              label="Bussiness Name"
+              id="name-input"
+              name="Beneficiary Name"
+              label="Beneficiary Name"
               placeholder="Bussiness Name"
+              value={beneficiaryname}
+              onChange={(e) => setbeneficiaryname(e.target.value)}
               type="text"
               required
             />
           </Grid>
           <Grid>
             <TextField
-              id="Bussiness Category"
-              value={businessCategory}
-              onChange={(e) => setbusinessCategory(e.target.value)}
-              label="Bussiness Category"
-              placeholder="Bussiness Category"
+              id="AccountHolderame"
+              label="Account Holderame"
+              value={accountholderame}
+              onChange={(e) => setaccountholderame(e.target.value)}
+              placeholder="Account Holderame"
               required
             />
           </Grid>
           <Grid>
             <TextField
-              id="businessdescription"
-              value={businessDiscription}
-              onChange={(e) => setbusinessDiscription(e.target.value)}
-              label="Bussiness Description"
-              placeholder="Bussiness Description"
+              id="Branch Ifsc Code"
+              label="Branch Ifsc Code"
+              value={branchifsccode}
+              onChange={(e) => setbranchifsccode(e.target.value)}
+              placeholder="Branch Ifsc Code"
               required
             />
           </Grid>
           <Grid>
             <TextField
-              id="website"
-              value={website}
-              onChange={(e) => setwebsite(e.target.value)}
-              label="Bussiness Website"
-              placeholder="Bussiness Website"
+              id="Account Number"
+              label="Account Number"
+              value={accountnumber}
+              onChange={(e) => setaccountnumber(e.target.value)}
+              placeholder="Account Number"
               required
             />
           </Grid>
-          <Button variant="contained" color="primary" type="submit" onClick={handleCreateSession}>
+          <Button variant="contained" onClick={handleCreateSession} color="primary" type="submit">
             save
           </Button>
         </Grid>
@@ -106,4 +106,4 @@ const BussinessOverview: React.FC = () => {
   );
 };
 
-export default BussinessOverview;
+export default BankDetails;

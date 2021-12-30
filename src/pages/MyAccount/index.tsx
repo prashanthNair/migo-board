@@ -4,8 +4,10 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CheckIcon from '@mui/icons-material/Check';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import BussinessOverview from '../../components/MyAccount/BussinessOverview';
 import Layout from '../../components/Dashboard/Layout';
+import BankDetails from '../../components/MyAccount/BankDetails';
 import BusinessDetails from '../../components/MyAccount/businessDetails';
 
 export interface TabPanelProps {
@@ -56,7 +58,7 @@ const MyAccount: React.FC = () => {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        sx={{ borderRight: 1, borderColor: 'divider', color: '#000000' }}
       >
         {/* <Typography variant="h3"> */}
         <h1>KYC Form</h1>
@@ -64,15 +66,19 @@ const MyAccount: React.FC = () => {
         <Typography variant="h5">
           Complete and submit the form to accept payments.
         </Typography>
+        <Tab label="Bank Details" sx={{ background: '#FFFFFF' }} />
         <Tab label="Contact Details" sx={{ background: '#F5F5F5' }} />
         <Tab label="BussinessOverview" />
         <Tab label="Bussiness Details" />
       </Tabs>
       {/* <TabPanel value={value} index={0} /> */}
-      <TabPanel value={value} index={3}>
+      <TabPanel value={value} index={2}>
+        <BankDetails />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
         <BussinessOverview />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={5}>
         <BusinessDetails />
       </TabPanel>
     </Box>

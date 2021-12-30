@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import { DashboardCustomize } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import Button from '@mui/material/Button';
 
 const SidebarItem = styled(Box)({
   display: 'flex',
@@ -22,6 +24,13 @@ function SideBarItems() {
   const navigate = useNavigate();
   return (
     <div>
+      <SidebarItem onClick={() => { navigate('/MyAccount'); }}>
+        <IconBox>
+          <DashboardCustomize />
+        </IconBox>
+        {/* <LinearProgress variant="determinate" onClick={() => { navigate('/MyAccount'); }} /> */}
+        <SideBarText>Kyc</SideBarText>
+      </SidebarItem>
       <SidebarItem>
         <IconBox>
           <DashboardCustomize />
