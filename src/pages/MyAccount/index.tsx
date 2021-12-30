@@ -47,41 +47,43 @@ const MyAccount: React.FC = () => {
   };
 
   return (
-    <Box
-      sx={{
-        ...commonStyles,
-      }}
-    >
-      <Tabs
-        orientation="vertical"
-        // variant="standard"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider', color: '#000000' }}
+    <Layout>
+      <Box
+        sx={{
+          ...commonStyles,
+        }}
       >
-        {/* <Typography variant="h3"> */}
-        <h1>KYC Form</h1>
-        {/* </Typography> */}
-        <Typography variant="h5">
-          Complete and submit the form to accept payments.
-        </Typography>
-        <Tab label="Bank Details" sx={{ background: '#FFFFFF' }} />
-        <Tab label="Contact Details" sx={{ background: '#F5F5F5' }} />
-        <Tab label="BussinessOverview" />
-        <Tab label="Bussiness Details" />
-      </Tabs>
-      {/* <TabPanel value={value} index={0} /> */}
-      <TabPanel value={value} index={2}>
-        <BankDetails />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <BussinessOverview />
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <BusinessDetails />
-      </TabPanel>
-    </Box>
+        <Tabs
+          orientation="vertical"
+        // variant="standard"
+          value={value}
+          onChange={handleChange}
+          aria-label="Vertical tabs example"
+          sx={{ borderRight: 1, borderColor: 'divider', color: '#000000' }}
+        >
+          {/* <Typography variant="h3"> */}
+          <h1>KYC Form</h1>
+          {/* </Typography> */}
+          <Typography variant="h5">
+            Complete and submit the form to accept payments.
+          </Typography>
+          <Tab label="Bank Details" sx={{ background: '#FFFFFF' }} />
+          <Tab label="Contact Details" sx={{ background: '#F5F5F5' }} />
+          <Tab label="BussinessOverview" />
+          <Tab label="Bussiness Details" />
+        </Tabs>
+        {/* <TabPanel value={value} index={0} /> */}
+        <TabPanel value={value} index={2}>
+          <BankDetails />
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <BussinessOverview />
+        </TabPanel>
+        <TabPanel value={value} index={5}>
+          <BusinessDetails />
+        </TabPanel>
+      </Box>
+    </Layout>
   );
 };
 
