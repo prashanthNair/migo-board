@@ -31,15 +31,14 @@ const BussinessOverview: React.FC = () => {
     );
     if (businessOverviewInfo.payload) {
     // eslint-disable-next-line no-console
-      console.log('brandinfo', businessOverviewInfo.payload);
-      navigate('/dashboard');
+      console.log('businessOverviewInfo', businessOverviewInfo.payload);
     }
   };
 
-  const handleSubmit = () => {
-    // event.preventDefault();
-    console.log('formValues');
-  };
+  // const handleSubmit = () => {
+  //   // event.preventDefault();
+  //   console.log('formValues');
+  // };
 
   return (
     <div>
