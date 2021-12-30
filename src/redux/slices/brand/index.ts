@@ -3,7 +3,7 @@ import {
 } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import {
-  createAccountSession, createBrandInfo, getBrandInfo, IBrandInfoSessionPayload, IBankInfoPayload, createKycBankSession,
+  createAccountSession, createBrandInfo, getBrandInfo, IBrandInfoSessionPayload, IBankInfoPayload, createKycBankSession, IBusinessOverviewInfoPayload, createKycBusinessOverviewSession,
 } from '../../../services/onboarding';
 
 interface Address {
@@ -95,6 +95,14 @@ export const createKycBankThunk = createAsyncThunk(
   },
 );
 
+export const createKycBusinessOverviewThunk = createAsyncThunk(
+  '/businessoverview/{brandId}',
+  async (payload: IBusinessOverviewInfoPayload) => {
+    const response = await createKycBusinessOverviewSession(payload);
+    return response;
+  },
+);
+
 const brandSlice = createSlice({
   name: 'brands',
   initialState,
@@ -111,6 +119,9 @@ const brandSlice = createSlice({
       state.data = action.payload;
     });
     builder.addCase(createKycBankThunk.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
+    builder.addCase(createKycBusinessOverviewThunk.fulfilled, (state, action) => {
       state.data = action.payload;
     });
   },

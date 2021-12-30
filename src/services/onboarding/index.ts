@@ -16,6 +16,14 @@ export interface IBankInfoPayload {
   accountnumber?: string;
   BrandId?:string;
 }
+
+export interface IBusinessOverviewInfoPayload {
+  BrandId?:string;
+  website?: string;
+  businessDiscription?: string;
+  businessName?: string;
+  businessCategory?: string;
+}
 export const createAccountSession = async (payload: AccountInfo) => {
   const {
     email, password,
@@ -71,6 +79,23 @@ export const createKycBankSession = async (payload: IBankInfoPayload) => {
     },
   };
   const { data } = await onboardApiInstance.patch(`/bankdetails/${BrandId}`, reqParam);
+  console.log('DATA', data);
+  return data;
+};
+
+export const createKycBusinessOverviewSession = async (payload: IBusinessOverviewInfoPayload) => {
+  const {
+    website, businessDiscription, businessName, businessCategory, BrandId,
+  } = payload;
+  const reqParam = {
+    BusinessOverview: {
+      Website: website,
+      BusinessDiscription: businessDiscription,
+      BusinessName: businessName,
+      BusinessCategory: businessCategory,
+    },
+  };
+  const { data } = await onboardApiInstance.patch(`/kycdetails/${BrandId}/businessOverview`, reqParam);
   console.log('DATA', data);
   return data;
 };
