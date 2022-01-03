@@ -67,15 +67,15 @@ const OrdersTable: React.FC = () => {
               <TableCell component="th" scope="row">
                 {row.date}
               </TableCell>
-              <TableCell align="right">{row.name}</TableCell>
-              <TableCell align="right">{row.product}</TableCell>
-              <TableCell align="right">{row.discount}</TableCell>
-              <TableCell align="right">{row.location}</TableCell>
-              <TableCell align="right">{row.location}</TableCell>
-              <TableCell align="right">Packed</TableCell>
-              <TableCell align="right">success</TableCell>
-              <TableCell align="right"><CloseIcon sx={{ color: '#A0A0A0' }} /></TableCell>
-              <TableCell align="right"><DownloadIcon sx={{ color: '#A0A0A0' }} /></TableCell>
+              <TableCell align="center">{row.name}</TableCell>
+              <TableCell align="center">{row.product}</TableCell>
+              <TableCell align="center">{row.discount}</TableCell>
+              <TableCell align="center">{row.location}</TableCell>
+              <TableCell align="center">{row.location}</TableCell>
+              <TableCell align="center">Packed</TableCell>
+              <TableCell align="center">success</TableCell>
+              <TableCell align="center"><CloseIcon sx={{ color: '#A0A0A0' }} /></TableCell>
+              <TableCell align="center"><DownloadIcon sx={{ color: '#A0A0A0' }} /></TableCell>
             </TableRow>
           ))}
         </TableBody>
