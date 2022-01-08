@@ -17,6 +17,10 @@ export const onboardApiInstance = axios.create({
   baseURL: getBaseApiUrl('brand'),
 });
 
+export const inventoryApiInstance = axios.create({
+  baseURL: getBaseApiUrl('inventory'),
+});
+
 export const kycApiInstance = axios.create({
   baseURL: getBaseApiUrl('brand/businessDetails'),
 });

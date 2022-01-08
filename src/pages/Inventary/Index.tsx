@@ -8,8 +8,9 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 // import { setProducts } from '../../redux/actions/productsActions';
-import Card from './Card';
+// import Card from './Card';
 import Layout from '../../components/Dashboard/Layout';
+import MyProducts from '../../components/invenatory/MyProducts';
 
 const TopNavigationBar = styled(Box)({
   background: '#FAFAFA',
@@ -108,7 +109,7 @@ const Inventory: React.FC = () => {
         </Products>
       </TopNavigationBar>
       <Flex>
-        <Card />
+        {/* <Card /> */}
       </Flex>
     </Layout>
   );

@@ -15,9 +15,9 @@ import AddIcon from '@mui/icons-material/Add';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Layout from '../../components/Dashboard/Layout';
-import DropDawn from '../../components/Products/DropDawn';
-import CategoryInput from '../../components/Products/CategoryInput';
+import Layout from '../Dashboard/Layout';
+import DropDawn from './DropDawn';
+import CategoryInput from './CategoryInput';
 
 const TopBar = styled(Box)({
   display: 'flex',

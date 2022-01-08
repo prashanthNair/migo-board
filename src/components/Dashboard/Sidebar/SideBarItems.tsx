@@ -65,6 +65,12 @@ function SideBarItems() {
         </IconBox>
         <SideBarText onClick={() => { navigate('/dashboard'); }}>Dashboard</SideBarText>
       </SidebarItem>
+      <SidebarItem>
+        <IconBox>
+          <DashboardCustomize />
+        </IconBox>
+        <SideBarText onClick={() => { navigate('/MyOrders'); }}>My Orders</SideBarText>
+      </SidebarItem>
       <SidebarItem onClick={() => { navigate('/inventory'); }}>
         <IconBox>
           <DashboardCustomize />

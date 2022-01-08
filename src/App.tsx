@@ -13,8 +13,6 @@ import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
 import SideBar from './components/Dashboard/Sidebar/index';
 import Nav from './components/Dashboard/Nav';
-import Inventory from './pages/Inventary/Index';
-import AddProduct from './pages/Inventary/AddProduct';
 
 const App: React.FC = () => {
   const currentTheme = useAppSelector(getTheme);
