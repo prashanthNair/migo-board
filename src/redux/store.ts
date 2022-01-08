@@ -3,6 +3,7 @@ import { configureStore, createStore } from '@reduxjs/toolkit';
 // Reducers
 import themeReducer from './slices/theme';
 import onboardingReducer from './slices/brand';
+import iventoryReducer from './slices/inventory';
 // import reducers from './reducers';
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
   reducer: {
     theme: themeReducer,
     Onboarding: onboardingReducer,
+    inventory: iventoryReducer,
   },
 });
 

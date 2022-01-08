@@ -15,7 +15,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Layout from '../../components/Dashboard/Layout';
+import Layout from '../Dashboard/Layout';
 import DropDawn from './DropDawn';
 import CategoryInput from './CategoryInput';
 
