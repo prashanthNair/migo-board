@@ -6,7 +6,7 @@ import Tab from '@mui/material/Tab';
 import Button from '@mui/material/Button';
 // import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { setProducts } from '../../redux/actions/productsActions';
 import Card from './Card';
 import Layout from '../../components/Dashboard/Layout';
@@ -43,6 +43,7 @@ const Flex = styled(Box)({
 });
 
 const Inventory: React.FC = () => {
+  const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -53,6 +54,12 @@ const Inventory: React.FC = () => {
   };
   // const products = useSelector((state) => state.allProducts.products);
   // const dispatch = useDispatch();
+
+  const handleNavigation = async () => {
+    alert('Clicked');
+    navigate('/createProduct');
+  };
+
   const fetchProducts = async () => {
     const response = await axios
       .get('https://fakestoreapi.com/products')
@@ -76,9 +83,10 @@ const Inventory: React.FC = () => {
               <Tab label="Inactive ()" />
             </Tabs>
           </List>
-          <Link to="/">
-            <Button variant="contained" style={{ height: '25px', fontSize: '0.6rem', fontWeight: 'bolder' }}>Add New</Button>
-          </Link>
+          {/* <Link to="/createProduct"> */}
+
+          <Button variant="contained" onClick={handleNavigation} style={{ height: '25px', fontSize: '0.6rem', fontWeight: 'bolder' }}>Add New</Button>
+          {/* </Link> */}
         </Products>
         <BreackLine />
         <Products>
