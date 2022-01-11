@@ -1,7 +1,20 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-debugger */
 import {
-  Box, CardActions, CardContent, CardMedia, ImageList, ImageListItem, ImageListItemBar, Input, InputLabel, ListSubheader, styled, Typography,
+  Box,
+  CardActions,
+  CardContent,
+  CardMedia,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  Input,
+  InputLabel,
+  ListSubheader,
+  styled,
+  Typography,
 } from '@mui/material';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
@@ -25,6 +38,7 @@ import Stack from '@mui/material/Stack';
 import _ from 'lodash';
 import { Label } from '@mui/icons-material';
 import InfoIcon from '@mui/icons-material/Info';
+import { any } from 'prop-types';
 import Layout from '../Dashboard/Layout';
 import { useDynamic, IData } from '../../hooks/dynamic';
 import { orderObjectBy } from '../../lib/order';
@@ -46,10 +60,18 @@ const Heading = styled(Typography)({
   fontWeight: 'bold',
 });
 const LeftContainer = styled(Box)({
-  flexGrow: 4, padding: 5, maxWidth: '60%', width: '40%', borderWidth: 1, borderStyle: 'solid',
+  flexGrow: 4,
+  padding: 5,
+  maxWidth: '60%',
+  width: '40%',
+  borderWidth: 1,
+  borderStyle: 'solid',
 });
 const RightContainer = styled(Box)({
-  flexGrow: 6, padding: 5, borderWidth: 1, borderStyle: 'solid',
+  flexGrow: 6,
+  padding: 5,
+  borderWidth: 1,
+  borderStyle: 'solid',
 });
 
 const FlexBox = styled('div')({
@@ -86,6 +108,9 @@ const Container = styled('div')({
   flexDirection: 'row',
   justifyContent: 'space-between',
 });
+export interface IUseComponentTreeProps {
+  data: IData[];
+}
 
 export const data: IData[] = TEMPLATE;
 const sortedData = orderObjectBy({
@@ -95,29 +120,37 @@ const sortedData = orderObjectBy({
 }) as IData[];
 
 const CreateProduct = () => {
-  const products:any = {};
+  const products: any = {};
   const [product, setProduct] = useState(products);
-  const [template, settemplate] = useState({});
-  const handleChange = (e:any) => {
+  const [template, settemplate] = useState();
+  const initalSata:IUseComponentTreeProps = { data: [] };
+  const [sorteddata, setSorteddataData] = useState(initalSata);
+  const [hasEnabled, sethasEnabled] = useState(false);
+  const handleChange = (e: any) => {
     debugger;
     const { name, value } = e.target;
-    setProduct((prevState:any) => ({
+    setProduct((prevState: any) => ({
       ...prevState,
       [name]: value,
     }));
   };
-
-  const handleClick = (e:any) => {
+  const handleClick = (e: any) => {
     debugger;
-    const tem = PRODUCT_TEMPLATE;
-    // const template = PRODUCT_TEMPLATE[e.target.value];
+
+    const temp = PRODUCT_TEMPLATE;
+    const sortedList = temp[e.target.innerText];
+    setSorteddataData(sortedList);
+    sethasEnabled(true);
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: any) => {
     console.log(product);
   };
 
-  const components = useDynamic({ data: sortedData });
+  if (hasEnabled) {
+    const components: any = useDynamic({ data: sortedData });
+    settemplate(components);
+  }
   return (
     <Layout>
       <TopBar>
@@ -146,9 +179,7 @@ const CreateProduct = () => {
       <Container>
         <LeftContainer>
           <ItemBox>
-            <Heading>
-              Product Type
-            </Heading>
+            <Heading>Product Type</Heading>
             <div>
               <RadioGroup
                 row
@@ -174,7 +205,11 @@ const CreateProduct = () => {
           <FlexBox>
             <div style={{ width: '30%' }}>
               <label htmlFor="contained-button-file">
-                <Input id="contained-button-file" type="file" placeholder="file" />
+                <Input
+                  id="contained-button-file"
+                  type="file"
+                  placeholder="file"
+                />
               </label>
             </div>
             <div>
@@ -183,48 +218,82 @@ const CreateProduct = () => {
               </Button>
             </div>
           </FlexBox>
-
         </LeftContainer>
         <RightContainer>
           <ItemBox>
-            <Heading>
-              Product Details
-            </Heading>
+            <Heading>Product Details</Heading>
           </ItemBox>
           <FlexBox>
-            <TextField name="ProductName" onChange={handleChange} value={product.ProductName} style={{ width: '25%' }} label="Product Name" required variant="outlined" />
+            <TextField
+              name="ProductName"
+              onChange={handleChange}
+              value={product.ProductName}
+              style={{ width: '25%' }}
+              label="Product Name"
+              required
+              variant="outlined"
+            />
             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-standard-label">Categories</InputLabel>
+              <InputLabel>Categories</InputLabel>
               <Select
-                labelId="demo-simple-select-standard-label"
-                id="demo-simple-select-standard"
                 value={product.Category}
                 name="Category"
-                label="Age"
-                key="Category"
+                label="Category"
                 onClick={handleClick}
                 onChange={handleChange}
               >
-                {
-                CATEGORIES.map((x) => <MenuItem>{x.Value}</MenuItem>)
-              }
-
+                {CATEGORIES.map((x) => (
+                  <MenuItem value={x.Value}>{x.key}</MenuItem>
+                ))}
               </Select>
             </FormControl>
           </FlexBox>
           <FlexBox>
-            <TextField onChange={handleChange} value={product.Tittle} name="Tittle" label="Tittle" style={{ width: '100%' }} required variant="outlined" />
+            <TextField
+              onChange={handleChange}
+              value={product.Tittle}
+              name="Tittle"
+              label="Tittle"
+              style={{ width: '100%' }}
+              required
+              variant="outlined"
+            />
           </FlexBox>
-          <div style={{
-            display: 'flex', columnGap: 10, rowGap: 20, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginTop: 20, padding: 20, backgroundColor: '#ffffff',
-          }}
-          >
-
-            {components}
-          </div>
+          <div
+            style={{
+              display: 'flex',
+              columnGap: 10,
+              rowGap: 20,
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              marginTop: 20,
+              padding: 20,
+              backgroundColor: '#ffffff',
+            }}
+          />
+          {
+            sorteddata ? template : <></>
+          }
           <FlexBox>
-            <TextField onChange={handleChange} value={product.Stock} name="Stock" label="Stock" style={{ width: '40%' }} required variant="outlined" />
-            <TextField onChange={handleChange} value={product.MRP} name="MRP" label="MRP" style={{ width: '40%' }} required variant="outlined" />
+            <TextField
+              onChange={handleChange}
+              value={product.Stock}
+              name="Stock"
+              label="Stock"
+              style={{ width: '40%' }}
+              required
+              variant="outlined"
+            />
+            <TextField
+              onChange={handleChange}
+              value={product.MRP}
+              name="MRP"
+              label="MRP"
+              style={{ width: '40%' }}
+              required
+              variant="outlined"
+            />
             <label>This stock is dedicated to Migobucks</label>
           </FlexBox>
           <FlexBox>

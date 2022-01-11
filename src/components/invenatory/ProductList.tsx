@@ -14,7 +14,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 // import { setProducts } from '../../redux/actions/productsActions';
 import { useSelector } from 'react-redux';
-import Product from './Product';
 import Layout from '../Dashboard/Layout';
 // import data from './mockdata/data.json';
 import { RootState } from '../../redux/store';
@@ -52,6 +51,9 @@ function ProductList() {
     { label: 'Exclusive', id: 1 },
     { label: 'ComBo', id: 2 },
   ];
+  const CustomTabPanel = styled(TabPanel)({
+    padding: 0,
+  });
   return (
     <div>
       <Box
@@ -65,9 +67,9 @@ function ProductList() {
               ))}
             </TabList>
           </Box>
-          <TabPanel value={value}>
+          <CustomTabPanel value={value}>
             <CustomTabs tabs={exTabs} data={exProducts} />
-          </TabPanel>
+          </CustomTabPanel>
         </TabContext>
       </Box>
     </div>

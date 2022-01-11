@@ -1,6 +1,6 @@
 import React from 'react';
 import type { RouteObject } from 'react-router-dom';
-import CreateProduct from '../components/Products/CreateProduct';
+import CreateProduct from '../components/Invenatory/CreateProduct';
 
 import Dashboard from '../pages/Dashboard';
 import Inventory from '../pages/Inventary/Index';

@@ -19,7 +19,7 @@ export default function CustomTabs(props: any) {
   };
 
   return (
-    <Box sx={{ width: "100%", typography: "body1", backgroundColor: '#E5E5E5' }}>
+    <Box sx={{ width: "100%", typography: "body1", backgroundColor: '#FAFAFA' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList onChange={handleChange} aria-label="Product Categories">
@@ -29,7 +29,7 @@ export default function CustomTabs(props: any) {
           </TabList>
         </Box>
         {tabs.map((x: string, index: any) => (
-          <TabPanel value={index?.toString()}>
+          <TabPanel style={{ backgroundColor: '#E5E5E5' }} value={index?.toString()}>
             <CustomList data={data[x]} />
           </TabPanel>
         ))}

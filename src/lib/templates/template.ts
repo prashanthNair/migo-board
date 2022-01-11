@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-export const PRODUCT_TEMPLATE = {
-  mobile: [
+export const PRODUCT_TEMPLATE:any = {
+  Mobile: [
     {
       displayName: 'Rear Camera Lens',
       inputType: 'text',
