@@ -52,7 +52,6 @@ const Flex = styled(Box)({
 
 const MyProducts: React.FC = () => {
   const dispatch = useAppDispatch();
-  const brandState = useSelector((state: RootState) => state);
   // const BrandId = brandState.Onboarding?.accountInfo?.BrandId;
   const BrandId = 'B001';
   const [value, setValue] = React.useState(0);

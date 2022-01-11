@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import React from 'react';
+import React, { useState } from 'react';
 import Radio from '@mui/material/Radio';
 import Select from '@mui/material/Select';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -29,6 +29,9 @@ import Layout from '../Dashboard/Layout';
 import { useDynamic, IData } from '../../hooks/dynamic';
 import { orderObjectBy } from '../../lib/order';
 import ImageContainer from './ImageContainer';
+import { CATEGORIES, TEMPLATE } from '../../lib/data';
+import { PRODUCT_TEMPLATE } from '../../lib/templates/template';
+import { IProduct } from '../../interfaces/IProduct';
 
 const TopBar = styled(Box)({
   display: 'flex',
@@ -73,12 +76,7 @@ const ItemBox = styled('div')({
   rowGap: 10,
   marginBottom: 10,
 });
-const Item = styled('div')({
-  backgroundColor: '#ffffff',
-  paddingLeft: 10,
-  marginRight: 20,
 
-});
 const Container = styled('div')({
   overflow: 'scroll',
   height: '100vh',
@@ -89,121 +87,36 @@ const Container = styled('div')({
   justifyContent: 'space-between',
 });
 
-export const data: IData[] = [
-  {
-    displayName: 'Brand',
-    dataType: 'text',
-    fieldName: 'brandName',
-    filedPosition: 90,
-  },
-  //   {
-  //     displayName: 'Company Type',
-  //     dataType: 'list',
-  //     fieldName: 'companyType',
-  //     filedPosition: 2,
-  //     data: [
-  //       {
-  //         value: '1',
-  //         name: 'Public',
-  //       },
-  //       {
-  //         value: '3',
-  //         name: 'Private',
-  //       },
-  //       {
-  //         value: '5',
-  //         name: 'None',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     displayName: 'Shelf Life',
-  //     dataType: 'list',
-  //     fieldName: 'shelfLife',
-  //     filedPosition: 2,
-  //     data: [
-  //       {
-  //         value: '1',
-  //         name: '1 KG',
-  //       },
-  //       {
-  //         value: '2',
-  //         name: '2 KG',
-  //       },
-  //       {
-  //         value: '3',
-  //         name: '3 KG',
-  //       },
-  //       {
-  //         value: '4',
-  //         name: '4 KG',
-  //       },
-  //       {
-  //         value: '5',
-  //         name: '5 KG',
-  //       },
-  //       {
-  //         value: '6',
-  //         name: '6 KG',
-  //       },
-  //     ],
-  //   },
-  {
-    displayName: 'Max.Retail Price(INR)',
-    dataType: 'number',
-    fieldName: 'mrp',
-    filedPosition: 3,
-  },
-  {
-    displayName: 'Loyalty Point%',
-    dataType: 'number',
-    fieldName: 'loyaltyPoint',
-    filedPosition: 10,
-  },
-  {
-    displayName: 'InStock',
-    dataType: 'number',
-    fieldName: 'inStock',
-    filedPosition: 1,
-  },
-  {
-    displayName: 'Loyalty Point%',
-    dataType: 'number',
-    fieldName: 'loyaltyPoint',
-    filedPosition: 10,
-  },
-  {
-    displayName: 'Loyalty Point%',
-    dataType: 'number',
-    fieldName: 'loyaltyPoint',
-    filedPosition: 10,
-  },
-  {
-    displayName: 'Loyalty Point%',
-    dataType: 'number',
-    fieldName: 'loyaltyPoint',
-    filedPosition: 10,
-  },
-  {
-    displayName: 'Loyalty Point%',
-    dataType: 'number',
-    fieldName: 'loyaltyPoint',
-    filedPosition: 10,
-  },
-  {
-    displayName: 'Loyalty Point%',
-    dataType: 'number',
-    fieldName: 'loyaltyPoint',
-    filedPosition: 10,
-  },
-];
+export const data: IData[] = TEMPLATE;
 const sortedData = orderObjectBy({
   data,
   key: ['filedPosition'],
   direction: 'asc',
 }) as IData[];
+
 const CreateProduct = () => {
-  debugger;
+  const products:any = {};
+  const [product, setProduct] = useState(products);
+  const [template, settemplate] = useState({});
+  const handleChange = (e:any) => {
+    debugger;
+    const { name, value } = e.target;
+    setProduct((prevState:any) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleClick = (e:any) => {
+    debugger;
+    const tem = PRODUCT_TEMPLATE;
+    // const template = PRODUCT_TEMPLATE[e.target.value];
+  };
+
+  const handleSubmit = (e:any) => {
+    console.log(product);
+  };
+
   const components = useDynamic({ data: sortedData });
   return (
     <Layout>
@@ -240,7 +153,9 @@ const CreateProduct = () => {
               <RadioGroup
                 row
                 aria-label="producttype"
-                name="row-radio-buttons-group"
+                name="ProductType"
+                value={product.ProductType}
+                onClick={handleChange}
               >
                 <FormControlLabel
                   value="exclusive"
@@ -277,26 +192,28 @@ const CreateProduct = () => {
             </Heading>
           </ItemBox>
           <FlexBox>
-            <TextField id="standard-basic" style={{ width: '25%' }} label="Product Name" required variant="outlined" />
+            <TextField name="ProductName" onChange={handleChange} value={product.ProductName} style={{ width: '25%' }} label="Product Name" required variant="outlined" />
             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="demo-simple-select-standard-label">Categories</InputLabel>
               <Select
                 labelId="demo-simple-select-standard-label"
                 id="demo-simple-select-standard"
-                value="age"
+                value={product.Category}
+                name="Category"
                 label="Age"
+                key="Category"
+                onClick={handleClick}
+                onChange={handleChange}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {
+                CATEGORIES.map((x) => <MenuItem>{x.Value}</MenuItem>)
+              }
+
               </Select>
             </FormControl>
           </FlexBox>
           <FlexBox>
-            <TextField id="standard-basic" label="Tittle" style={{ width: '100%' }} required variant="outlined" />
+            <TextField onChange={handleChange} value={product.Tittle} name="Tittle" label="Tittle" style={{ width: '100%' }} required variant="outlined" />
           </FlexBox>
           <div style={{
             display: 'flex', columnGap: 10, rowGap: 20, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginTop: 20, padding: 20, backgroundColor: '#ffffff',
@@ -306,9 +223,24 @@ const CreateProduct = () => {
             {components}
           </div>
           <FlexBox>
-            <TextField id="standard-basic" label="Stock" style={{ width: '40%' }} required variant="outlined" />
-            <TextField id="standard-basic" label="MRP" style={{ width: '40%' }} required variant="outlined" />
+            <TextField onChange={handleChange} value={product.Stock} name="Stock" label="Stock" style={{ width: '40%' }} required variant="outlined" />
+            <TextField onChange={handleChange} value={product.MRP} name="MRP" label="MRP" style={{ width: '40%' }} required variant="outlined" />
             <label>This stock is dedicated to Migobucks</label>
+          </FlexBox>
+          <FlexBox>
+            <Button
+              variant="contained"
+              style={{
+                height: '30px',
+                fontSize: '0.6rem',
+                fontWeight: 'bolder',
+                paddingLeft: '20px',
+                paddingRight: '20px',
+              }}
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
           </FlexBox>
         </RightContainer>
       </Container>
