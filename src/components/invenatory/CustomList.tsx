@@ -4,16 +4,15 @@
 import React from 'react';
 import CustomCard from './CustomCard';
 
-export default function CustomList(props: { data: []}) {
+export default function CustomList(props:any) {
+  const { CategoryProducts } = props;
   debugger;
   return (
     <div style={{
       display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', backgroundColor: '#E5E5E5',
     }}
     >
-      {
-            props.data.map((x) => <CustomCard />)
-        }
+      <CustomCard data={CategoryProducts} />
 
     </div>
   );

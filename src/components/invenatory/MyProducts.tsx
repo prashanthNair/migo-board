@@ -56,11 +56,14 @@ const MyProducts: React.FC = () => {
   const BrandId = 'B001';
   const [value, setValue] = React.useState(0);
   const [productType, setProductType] = React.useState({});
-  const handlechangeProductType = (type:{}) => {
-    setProductType(type);
-  };
+  // const handlechangeProductType = (type:{}) => {
+  //   setProductType(type);
+  // };
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+  };
+  const handlechangeProductType = (type:{}) => {
+    setProductType(type);
   };
   // const [secondValue, setSecondValue] = React.useState(0);
   // const handleChanged = (event: React.SyntheticEvent, newSecondValue: number) => {
