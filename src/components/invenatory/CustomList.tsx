@@ -1,11 +1,9 @@
-/* eslint-disable no-debugger */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable array-callback-return */
 import React from 'react';
 import CustomCard from './CustomCard';
 
 export default function CustomList(props: { data: [] }) {
-  debugger;
   return (
     <div
       style={{

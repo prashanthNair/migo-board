@@ -5,10 +5,17 @@ import { styled } from '@mui/material/styles';
 
 import Nav from '../Nav';
 import SideBar from '../Sidebar/index';
-// import SelectedListItem from '../Sidebar/index';
 
 const Layout: React.FC = (props) => {
   const { children } = props;
+
+  // let brandId: any = localStorage.getItem('BrandID');
+  // brandId = 'B001';
+  // const dispatch = useDispatch();
+
+  // dispatch(getOrdersByBrandIdThunk(brandId));
+  // dispatch(productCategoriesThunk());
+  // dispatch(getProductsThunk({ BrandId: brandId }));
 
   const [sidebarActive, setSidebarActive] = useState<boolean>(true);
 
@@ -30,18 +37,10 @@ const Layout: React.FC = (props) => {
     overflow: 'auto',
   }));
 
-  const handleSidebarToggle = useCallback(
-    () => setSidebarActive(!sidebarActive),
-    [sidebarActive],
-  );
-  const onDashboardClick = () => {
-    alert('daSHBOARD');
-  };
-
   return (
     <Grid container id="dashboard-layout-box">
       <Grid xs={sidebarWidth} item id="dashboard-sidebar">
-        <SideBar onSidebarToggle={onDashboardClick} />
+        <SideBar />
       </Grid>
       <Grid xs={contentWidth} item id="dashboard-content">
         <Nav height={navbarHeight} />

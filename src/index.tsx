@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -8,6 +9,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { store } from './redux/store';
+
+(window as any).global = window;
+// @ts-ignore
+window.Buffer = window.Buffer || require('buffer').Buffer;
 
 ReactDOM.render(
   <React.StrictMode>

@@ -3,15 +3,18 @@ import { configureStore, createStore } from '@reduxjs/toolkit';
 // Reducers
 import themeReducer from './slices/theme';
 import onboardingReducer from './slices/brand';
-import iventoryReducer from './slices/inventory';
-// import reducers from './reducers';
+import inventoryReducer from './slices/inventory';
+import orderTrackingSlice from './slices/orderTracking';
+import appState from './slices/global';
 
 export const store = configureStore({
   // reducers,
   reducer: {
     theme: themeReducer,
     Onboarding: onboardingReducer,
-    inventory: iventoryReducer,
+    inventory: inventoryReducer,
+    orderTracking: orderTrackingSlice,
+    app: appState,
   },
 });
 

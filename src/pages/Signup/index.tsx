@@ -46,7 +46,6 @@ const SizedBox = styled(Box)({
 });
 
 const SignupPage: React.FC = () => {
-  debugger; // eslint-disable-line no-debugger
   const dispatch = useAppDispatch();
   const [name, setName] = useState<string>('');
   const [mobile, setMobile] = useState<string>('');

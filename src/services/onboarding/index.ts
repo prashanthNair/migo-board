@@ -1,4 +1,4 @@
-import { onboardApiInstance } from '../../api';
+import { authorizerInsatnce, onboardApiInstance } from '../../api';
 import { AccountInfo } from '../../redux/slices/brand';
 
 export interface IBrandInfoSessionPayload {
@@ -33,12 +33,29 @@ export const createAccountSession = async (payload: AccountInfo) => {
     Password: password,
   };
 
-  const { data } = await onboardApiInstance.post('/', reqParam);
-  debugger;// eslint-disable-line no-debugger
+  const { data } = await authorizerInsatnce.post('/register', reqParam);
+
   // data = JSON.parse(data);
 
   const brandObj = JSON.parse(data.body);
   return brandObj;
+};
+
+export const postLogin = async (payload:any) => {
+  const params = {
+    EmailID: payload.email,
+    Password: payload.password,
+  };
+  // const { data } = await authorizerInsatnce.post('/login', params);
+  const data = {
+    EmailID: 'Prasanth@migobucks.com',
+    Token: 'test',
+    UserId: 'U100',
+    BrandId: 'B100',
+  };
+
+  console.log('DATA', data);
+  return data;
 };
 
 export const getBrandDetails = async (brandId: string) => {

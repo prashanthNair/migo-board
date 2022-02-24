@@ -1,4 +1,5 @@
-/* eslint-disable no-debugger */
+/* eslint-disable array-callback-return */
+  
 /* eslint-disable consistent-return */
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-case */
@@ -54,9 +55,8 @@ export const useDynamic = (
 ): JSX.Element[] | undefined => {
   const { data } = props;
   const [component, setComponent] = useState<JSX.Element[]>();
-  debugger;
+
   useEffect(() => {
-    // eslint-disable-next-line array-callback-return
     const tree = data.map((el) => {
       switch (el.dataType) {
         case 'list':

@@ -23,7 +23,6 @@ const BussinessOverview: React.FC = () => {
   const BrandId = brandState.Onboarding?.accountInfo?.BrandId;
 
   const handleCreateSession = async () => {
-    debugger; // eslint-disable-line no-debugger
     const businessOverviewInfo = await dispatch(
       createKycBusinessOverviewThunk({
         website, businessDiscription, businessName, businessCategory, BrandId,

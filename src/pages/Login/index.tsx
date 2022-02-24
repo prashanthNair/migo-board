@@ -11,10 +11,10 @@ import Checkbox from '@mui/material/Checkbox';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import loginImage from '../../assets/images/login.png';
 
-import { BrandState, createAccountSessionThunk } from '../../redux/slices/brand';
+import { BrandState, createAccountSessionThunk, loginThunk } from '../../redux/slices/brand';
 
 const StyledBlueHeading = styled(Typography)({
   color: '#000000',
@@ -54,6 +54,7 @@ const SignUpLink = styled(Link)({
 const LoginPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [hasLoginButton, sethasLoginButton] = useState(false);
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -69,6 +70,20 @@ const LoginPage: React.FC = () => {
     );
     if (createAccount.payload) {
       navigate('/signup');
+    }
+  };
+
+  const handleLoginSession = async () => {
+    const createAccount = await dispatch(
+      loginThunk({
+        email,
+        password,
+      }),
+    );
+    if (createAccount.payload) {
+      const userDetails:any = createAccount.payload;
+      localStorage.setItem('BrandId', userDetails?.BrandId);
+      navigate('/container');
     }
   };
 
@@ -119,9 +134,18 @@ const LoginPage: React.FC = () => {
               Accept our
             </span>
             <CheckboxLink to="/"> Terms and services </CheckboxLink>
-            <LongButton variant="contained" onClick={handleCreateSession}>
-              Create Account
-            </LongButton>
+            {
+              hasLoginButton ? (
+                <LongButton variant="contained" onClick={handleCreateSession}>
+                  Create Account
+                </LongButton>
+              ) : (
+                <LongButton variant="contained" onClick={handleLoginSession}>
+                  Login
+                </LongButton>
+              )
+            }
+
             <SizedBox />
             <span
               style={{
@@ -133,7 +157,7 @@ const LoginPage: React.FC = () => {
               Already have an account?
               {' '}
             </span>
-            <SignUpLink to="/"> Signin now </SignUpLink>
+            <SignUpLink to="/" onClick={() => sethasLoginButton(true)}> Signin now </SignUpLink>
           </FormBox>
         </Grid>
         {!breakPointMobile && (

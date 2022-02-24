@@ -5,7 +5,8 @@ import { Typography } from '@mui/material';
 import { DashboardCustomize } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import DialogBox from '../../dialogBox';
+import { makeStyles } from '@mui/styles';
+import DialogBox from '../../DialogBox';
 
 const SidebarItem = styled(Box)({
   display: 'flex',
@@ -35,9 +36,27 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 function SideBarItems() {
   const navigate = useNavigate();
   const [hasOpen, sethasOpen] = useState(false);
+  const [activeColor, setstate] = useState('');
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      color: 'red',
+    },
+    links: {
+      padding: '0 50px',
+      color: 'white',
+      '&:hover': {
+        textDecorationColor: 'green',
+        cursor: 'pointer',
+      },
+    },
 
+  }));
+  const navBar = useStyles();
+  const onClick = () => {
+
+  };
   const handleClickOpen = () => {
-    debugger;// eslint-disable-line no-debugger
+      
     sethasOpen(true);
   };
   const handleClose = () => {
@@ -63,15 +82,15 @@ function SideBarItems() {
         <IconBox>
           <DashboardCustomize />
         </IconBox>
-        <SideBarText onClick={() => { navigate('/dashboard'); }}>Dashboard</SideBarText>
+        <SideBarText className={navBar.root}>Dashboard</SideBarText>
       </SidebarItem>
       <SidebarItem>
         <IconBox>
           <DashboardCustomize />
         </IconBox>
-        <SideBarText onClick={() => { navigate('/MyOrders'); }}>My Orders</SideBarText>
+        <SideBarText onClick={() => { navigate('/orders'); }}>My Orders</SideBarText>
       </SidebarItem>
-      <SidebarItem onClick={() => { navigate('/inventory'); }}>
+      <SidebarItem onClick={() => { navigate('/inventory', { state: { name: 'Xyz' } }); }}>
         <IconBox>
           <DashboardCustomize />
         </IconBox>

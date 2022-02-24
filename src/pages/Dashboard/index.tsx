@@ -1,10 +1,10 @@
-import React from 'react';
-import Layout from '../../components/Dashboard/Layout';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const Dashboard: React.FC = () => (
-  <Layout>
+  <div>
     <h1>Dashboard</h1>
-  </Layout>
+  </div>
 );
 
 export default Dashboard;

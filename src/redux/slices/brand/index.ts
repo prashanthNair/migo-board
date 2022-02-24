@@ -3,7 +3,7 @@ import {
 } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import {
-  createAccountSession, createBrandInfo, getBrandInfo, IBrandInfoSessionPayload, IBankInfoPayload, createKycBankSession, IBusinessOverviewInfoPayload, createKycBusinessOverviewSession,
+  createAccountSession, createBrandInfo, getBrandInfo, IBrandInfoSessionPayload, IBankInfoPayload, createKycBankSession, IBusinessOverviewInfoPayload, createKycBusinessOverviewSession, postLogin,
 } from '../../../services/onboarding';
 
 interface Address {
@@ -49,8 +49,14 @@ export interface BrandState {
     data?: IBrand;
     updatedAt?: Date
     accountInfo?: IBrand
+    userDetails?:IUserDetails
 }
-
+export interface IUserDetails {
+  UserId:string;
+  EmailID:string;
+  Token: string;
+  BrandId:string;
+}
 export interface BankState {
   data?: IKycBank;
   updatedAt?: Date
@@ -62,6 +68,21 @@ export interface AccountInfo{
 }
 
 const initialState: BrandState = { };
+
+// export const brandHealthThunk = createAsyncThunk(
+//   '/{BrandId}/brandHealth',
+//   async () =>
+//     // const response = await getBrandHealth();
+//     ({ status: 'Sucess' })
+//   ,
+// );
+export const loginThunk = createAsyncThunk(
+  '/authorizer/login',
+  async (payload:AccountInfo) => {
+    const response = await postLogin(payload);
+    return response;
+  },
+);
 
 export const createAccountSessionThunk = createAsyncThunk(
   '/brand',
@@ -109,6 +130,12 @@ const brandSlice = createSlice({
   reducers: {
   },
   extraReducers: (builder) => {
+    // builder.addCase(brandHealthThunk.fulfilled, (state, action) => {
+    //   state.data = action.payload;
+    // });
+    builder.addCase(loginThunk.fulfilled, (state, action) => {
+      state.userDetails = action.payload;
+    });
     builder.addCase(createAccountSessionThunk.fulfilled, (state, action) => {
       state.accountInfo = action.payload;
     });
@@ -126,11 +153,5 @@ const brandSlice = createSlice({
     });
   },
 });
-
-// Selectors
-const getCurrentBrand = createSelector(
-  (state: RootState) => state.Onboarding,
-  (Onboarding) => Onboarding,
-);
 
 export default brandSlice.reducer;

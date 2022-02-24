@@ -2,28 +2,24 @@ import React, { useMemo } from 'react';
 import { useRoutes } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
 import { useAppSelector } from './redux/hooks';
 import { getTheme } from './redux/slices/theme';
 
-import appRoutes from './routes';
-import Layout from './components/Dashboard/Layout';
-
-import LoginPage from './pages/Login';
-import SignupPage from './pages/Signup';
-import SideBar from './components/Dashboard/Sidebar/index';
-import Nav from './components/Dashboard/Nav';
+import dashboard from './routes/dashboard';
+import RootContainer from './components/Container';
 
 const App: React.FC = () => {
   const currentTheme = useAppSelector(getTheme);
   const muiTheme = useMemo(() => createTheme(currentTheme), [currentTheme]);
 
-  const elements = useRoutes(appRoutes);
+  const elements = useRoutes(dashboard);
 
   return (
     <ThemeProvider theme={muiTheme}>
       <CssBaseline />
-      {elements}
+      <RootContainer>
+        {elements}
+      </RootContainer>
     </ThemeProvider>
   );
 };

@@ -1,11 +1,12 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Layout from '../../components/Dashboard/Layout';
 import ProductList from '../../components/Invenatory/ProductList';
 
-const Inventory: React.FC = () => {
+const Inventory: React.FC = (state) => {
   const navigate = useNavigate();
+  const params = useLocation();
   const handleNavigation = async () => {
     navigate('/createProduct');
   };

@@ -23,7 +23,6 @@ const BankDetails: React.FC = () => {
   const BrandId = brandState.Onboarding?.accountInfo?.BrandId;
 
   const handleCreateSession = async () => {
-    debugger; // eslint-disable-line no-debugger
     const bankinfo = await dispatch(
       createKycBankThunk({
         beneficiaryname, accountholderame, branchifsccode, accountnumber, BrandId,

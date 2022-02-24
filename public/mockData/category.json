@@ -1,0 +1,30 @@
+{
+  "Grocery & Households": [
+    "Daily Essentials",
+    "Masala & Spices ",
+    "Family Nutritions",
+    "Ghee & Diary",
+    "Snacks & Bakery ",
+    "Cooking Essentials",
+    "Drinks & Beverages",
+    "Cleaning & Households",
+    "Dry Fruits & Healthy Snacks",
+    "Rice, Flours & Grains",
+    "Pulses & Lentles",
+    "Personal Care",
+    "Pet Care",
+    "Packed Foods & Pickles"
+  ],
+  "Health & Fitness": [
+    "Wellness",
+    "Vitamins & Dietary Supplements",
+    "Sports Nutrition",
+    "Family Nutritions",
+    "Medicines",
+    "Medical Equipments",
+    "Fitness Equipments",
+    "Dry Fruits & Healthy Snacks",
+    "Ayurveda"
+  ],
+  "ProductCategory": "Mobile"
+}

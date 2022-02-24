@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable dot-notation */
 /* eslint-disable quotes */
-/* eslint-disable no-debugger */
+
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
@@ -12,7 +12,7 @@ import CustomList from "./CustomList";
 
 export default function CustomTabs(props: any) {
   const { tabs, data } = props;
-  debugger;
+
   const [value, setValue] = React.useState("1");
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);

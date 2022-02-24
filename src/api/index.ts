@@ -3,7 +3,8 @@ import axios from 'axios';
 const isProduction: boolean = process.env.NODE_ENV === 'production';
 const { hostname } = window.location;
 
-const baseApiUrl = 'https://api.migobucks.com';
+// const baseApiUrl = 'https://api.migobucks.com';
+const baseApiUrl = 'http://127.0.0.1:3000/dev';
 const applicationDomain = 'brands.migobucks.com';
 
 export const getBaseApiUrl = (path?: string) => {
@@ -18,14 +19,20 @@ export const onboardApiInstance = axios.create({
 });
 
 export const inventoryApiInstance = axios.create({
-  baseURL: getBaseApiUrl('inventory'),
+  baseURL: getBaseApiUrl(''),
 });
 
+export const authorizerInsatnce = axios.create({
+  baseURL: getBaseApiUrl('authorizer'),
+});
+
+export const orderInsatnce = axios.create({
+  baseURL: getBaseApiUrl('order'),
+});
 export const kycApiInstance = axios.create({
   baseURL: getBaseApiUrl('brand/businessDetails'),
 });
 
-// BrandId in PathParam
-// export const kycbankApiInstance = axios.create({
-//   baseURL: getBaseApiUrl('brand/bankdetails/'),
-// });
+export const mockData = axios.create({
+  baseURL: './mockData/category.json',
+});
