@@ -6,8 +6,6 @@ import React, { useState } from 'react';
 import { Box, styled, Typography } from '@mui/material';
 import ProductTab from './ProductTab';
 
-import Container from '../Container';
-
 const InventoryContainer = styled('div')({
   display: 'flex',
   flexDirection: 'row',
@@ -15,11 +13,10 @@ const InventoryContainer = styled('div')({
 });
 
 const CreateProduct = () => (
-  <Container>
-    <InventoryContainer>
-      <ProductTab />
-    </InventoryContainer>
-  </Container>
+
+  <InventoryContainer>
+    <ProductTab />
+  </InventoryContainer>
 );
 
 export default CreateProduct;

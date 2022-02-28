@@ -7,20 +7,21 @@ import basic from '../../routes/dashboard';
 import { useAppSelector } from '../../redux/hooks';
 import RootContainer from '../../components/Container';
 
-const Container: React.FC = () => {
+const ContainerTest: React.FC = () => {
   const currentTheme = useAppSelector(getTheme);
   const muiTheme = useMemo(() => createTheme(currentTheme), [currentTheme]);
 
   const children = useRoutes(basic);
 
   return (
-    <ThemeProvider theme={muiTheme}>
-      <CssBaseline />
-      <RootContainer>
-        {children}
-      </RootContainer>
-    </ThemeProvider>
+    // <ThemeProvider theme={muiTheme}>
+    //   <CssBaseline />
+    //   <RootContainer>
+    //     {children}
+    //   </RootContainer>
+    // </ThemeProvider>
+    <div />
   );
 };
 
-export default Container;
+// export default Container;

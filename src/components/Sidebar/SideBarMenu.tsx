@@ -51,11 +51,11 @@ export default function CustomMenu() {
             <ListItemText>Order Tracking</ListItemText>
 
           </CustomMenuItem>
-          <CustomMenuItem className={location.pathname === '/container/inventory' ? 'style.root' : ''}>
+          <CustomMenuItem className={location.pathname === '/inventory' ? 'style.root' : ''}>
             <ListItemIcon>
               <ContentCut fontSize="small" />
             </ListItemIcon>
-            <ListItemText onClick={() => { navigate('/container/inventory'); }}>Inventory</ListItemText>
+            <ListItemText onClick={() => { navigate('/inventory'); }}>Inventory</ListItemText>
 
           </CustomMenuItem>
         </MenuList>

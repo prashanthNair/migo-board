@@ -12,30 +12,29 @@ const Inventory: React.FC = (state) => {
   };
 
   return (
-    <Layout>
+
+    <div style={{
+      display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', backgroundColor: '#FAFAFA',
+    }}
+    >
       <div style={{
-        display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', backgroundColor: '#FAFAFA',
+        display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10, marginBottom: 10, marginRight: 50,
       }}
       >
-        <div style={{
-          display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10, marginBottom: 10, marginRight: 50,
-        }}
+        <Button
+          variant="contained"
+          onClick={handleNavigation}
+          style={{
+            height: 42, width: 100, fontSize: '0.6rem', fontWeight: 'bolder',
+          }}
         >
-          <Button
-            variant="contained"
-            onClick={handleNavigation}
-            style={{
-              height: 42, width: 100, fontSize: '0.6rem', fontWeight: 'bolder',
-            }}
-          >
-            Add New
-          </Button>
-        </div>
-
-        <ProductList />
-
+          Add New
+        </Button>
       </div>
-    </Layout>
+
+      <ProductList />
+
+    </div>
   );
 };
 

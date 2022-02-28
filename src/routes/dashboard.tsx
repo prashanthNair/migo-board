@@ -11,7 +11,7 @@ export default [
 
   { path: '/container', element: <Dashboard /> },
   { path: '/dashboard', element: <Dashboard /> },
-  { path: '/container/inventory', element: <InventoryContainer /> },
+  { path: '/inventory', element: <InventoryContainer /> },
   { path: '/createProduct', element: <CreateProduct /> },
   { path: '/orders', element: <Orders /> },
   { path: '/orderTracking', element: <OrderTracking /> },

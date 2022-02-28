@@ -5,15 +5,11 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 import ProductDetailsPannel from './ProductDetailsPannel';
 import AdditionInfoPannel from './AdditionInfoPannel';
 import DescriptionPannel from './DescriptionPannel';
 import PricingPannel from './Pricing';
-import TextPanel from './Text';
 import { useAppDispatch } from '../../redux/hooks';
-import { productCategoriesThunk, selectProductByID } from '../../redux/slices/inventory';
 
 export default function ProductTab() {
   debugger;
