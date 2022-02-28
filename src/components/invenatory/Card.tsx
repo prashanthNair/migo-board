@@ -8,8 +8,7 @@ const CardContainer = styled('div')({
 
 const Card = (props:any) => {
   const { category, type, data } = props;
-  const typeData = data[type];
-  const products = typeData[category];
+  const products = data[category];
   return (
     <CardContainer>
       {

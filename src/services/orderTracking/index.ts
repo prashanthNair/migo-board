@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-/* eslint-disable no-debugger */
+
 import _ from 'lodash';
 import { orderInsatnce } from '../../api';
 import { IOrder } from '../../interfaces/IOrder';
@@ -9,10 +9,10 @@ export interface IOrderDetails {
   OrderID?: string;
 }
 export const getOrdersByBrandId = async (brandId: string) => {
-  const { data } = await orderInsatnce.get(`/brand/${brandId}`);
+  const { data } = await orderInsatnce.get(`/brand/order/${brandId}`);
   console.log(`Response: OrderByBrandID ${data.body}`);
   let orderData:any = [];
-  debugger;
+
   if (data.body) {
     orderData = _.map(data.body, (x, index) => ({
       id: index,

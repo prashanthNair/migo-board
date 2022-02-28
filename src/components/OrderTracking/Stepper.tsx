@@ -31,12 +31,12 @@ const classes:any = () => ({
 });
 
 export default function CustomStepper() {
-  const [expand, setExpand] = React.useState(false);
+  const [expand, setExpand] = React.useState(true);
   const toggleAcordion = () => {
     setExpand((prev) => !prev);
   };
   return (
-    <Box sx={{ width: '100%', marginBottom: 0.5 }}>
+    <Box sx={{ width: '100%', marginBottom: 1 }}>
       <Accordion expanded={expand}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -45,7 +45,7 @@ export default function CustomStepper() {
           onClick={toggleAcordion}
         />
         <AccordionDetails>
-          <Stepper activeStep={1} alternativeLabel>
+          <Stepper activeStep={2} alternativeLabel>
             {steps.map((label) => (
               <Step key={label}>
                 <CustomStepLabel StepIconProps={{

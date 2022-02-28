@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 import {
   createSlice,
   createSelector,
@@ -82,7 +81,6 @@ const productSlice = createSlice({
       state.product.PricingAndShipingDetails = action.payload;
     },
     ProductDetailsData: (state, action) => {
-      debugger;
       state.productDetails = action.payload;
     },
   },

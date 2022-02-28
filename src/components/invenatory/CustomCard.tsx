@@ -75,7 +75,7 @@ const CustomCard = (props:any) => {
   // });
   const handleDoubleClick = () => {
     postProductDetails();
-    navigate('/createProduct', { state: { productId: data.ProductID } });
+    navigate('/createProduct', { state: { ProductID: data.ProductID } });
   };
 
   return (

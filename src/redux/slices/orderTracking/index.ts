@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 /* eslint-disable import/prefer-default-export */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IOrder } from '../../../interfaces/IOrder';
@@ -34,9 +33,7 @@ const orderTrackingSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    debugger;
     builder.addCase(getOrdersByBrandIdThunk.fulfilled, (state, action) => {
-      debugger;
       state.Orders = action.payload;
     });
   },

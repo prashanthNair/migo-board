@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import * as React from 'react';
@@ -6,40 +5,13 @@ import { DataGrid } from '@mui/x-data-grid';
 import { makeStyles } from '@mui/styles';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import CustomStepper from '../OrderTracking/Stepper';
-import { useAppSelector } from '../../redux/hooks';
-
-const rows = [
-  {
-    id: 1,
-    OrderId: 'Snow',
-    Location: 'Jon',
-    Amount: 35,
-    OrderDate: 10,
-    Address: 1,
-    Status: 'Snow',
-    Invoice: 'Jon',
-    Action: 'any',
-  },
-  {
-    id: 1,
-    OrderId: 'Snow',
-    Location: 'Jon',
-    Amount: 35,
-    OrderDate: 10,
-    Address: 1,
-    Status: 'Snow',
-    Invoice: 'Jon',
-    Action: 'any',
-  },
-];
 
 export default function OrdersTable(props:any) {
   const { data } = props;
 
-  debugger;
   const datarows = data || [];
-  debugger;
-  const [hasOpen, setHasOpen] = React.useState(true);
+
+  const [hasOpen, setHasOpen] = React.useState(false);
   const columns = [
     { field: 'OrderId', headerName: 'ORDER #', width: 130 },
     { field: 'Location', headerName: 'LOCATION', width: 130 },

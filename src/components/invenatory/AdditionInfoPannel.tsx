@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
 
 /* eslint-disable react/destructuring-assignment */
@@ -62,7 +61,6 @@ function AdditionInfoPannel(props:any) {
   const dispatch = useAppDispatch();
 
   const getProductInfo = () => {
-    debugger;
     details = useAppSelector(
       (state) => state.inventory.productDetails,
     );

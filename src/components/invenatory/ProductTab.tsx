@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -12,8 +11,6 @@ import PricingPannel from './Pricing';
 import { useAppDispatch } from '../../redux/hooks';
 
 export default function ProductTab() {
-  debugger;
-
   const dispatch = useAppDispatch();
   const [value, setValue] = React.useState('1');
 

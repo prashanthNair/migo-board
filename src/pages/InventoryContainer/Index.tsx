@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 import React from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -8,7 +7,6 @@ import { getProductsByBrandIdThunk } from '../../redux/slices/inventory';
 import { IProductsPayyload } from '../../interfaces/IProductsPayyload';
 
 const InventoryContainer: React.FC = (state) => {
-  debugger;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   // const brandId = localStorage.getItem('BrandID');

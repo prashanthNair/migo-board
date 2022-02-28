@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 /* eslint-disable no-shadow */
 
 /* eslint-disable react/destructuring-assignment */
@@ -66,7 +65,6 @@ function PricingPannel(props: any) {
   const [validationOptions, setvalidationOptions] = useState(PRICING_VALIDATION);
 
   const getProductInfo = () => {
-    debugger;
     details = useAppSelector(
       (state) => state.inventory.productDetails,
     );

@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-debugger */
+
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import {
@@ -201,7 +201,6 @@ function ProductDetailsPannel(props:any) {
   };
 
   const handleNext = (e: any) => {
-    debugger;
     if (validateInputs() === 0) {
       productDetails.ImageLinks = { ...imageList };
       setProductDetails((p:any) => ({
@@ -213,7 +212,6 @@ function ProductDetailsPannel(props:any) {
   };
 
   const handleChange = (event:any) => {
-    debugger;
     const { name } = event.target;
     const { value } = event.target;
     if (name === 'Category') {
@@ -227,7 +225,6 @@ function ProductDetailsPannel(props:any) {
   };
 
   const uploadFile = (file:any) => {
-    debugger;
     const BrandId:any = localStorage.getItem('BrandId');
     fileList.forEach((element:any) => {
       const params = {
@@ -247,7 +244,6 @@ function ProductDetailsPannel(props:any) {
   };
 
   const handleFileInput = (e:any) => {
-    debugger;
     const file:any = e.target.files[0];
     // const selectedFiles = [...files, file];
     // setfiles(selectedFiles);
@@ -263,7 +259,6 @@ function ProductDetailsPannel(props:any) {
     myBucket.putObject(params)
       .on('httpUploadProgress', (evt) => {
         console.log(params.Key, 'Upload sucessfull');
-        // setProgress(Math.round((evt.loaded / evt.total) * 100));
       })
       .send((err) => {
         if (err) console.log(err);

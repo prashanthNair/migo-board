@@ -4,6 +4,7 @@
 
 import React, { useState } from 'react';
 import { Box, styled, Typography } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 import ProductTab from './ProductTab';
 
 const InventoryContainer = styled('div')({
@@ -12,11 +13,12 @@ const InventoryContainer = styled('div')({
   justifyContent: 'space-between',
 });
 
-const CreateProduct = () => (
-
-  <InventoryContainer>
-    <ProductTab />
-  </InventoryContainer>
-);
-
+const CreateProduct = () => {
+  const location = useLocation();
+  return (
+    <InventoryContainer>
+      <ProductTab />
+    </InventoryContainer>
+  );
+};
 export default CreateProduct;

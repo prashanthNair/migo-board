@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import {
@@ -56,7 +55,6 @@ function DescriptionPannel(props:any) {
   const dispatch = useAppDispatch();
 
   const getProductInfo = () => {
-    debugger;
     details = useAppSelector(
       (state) => state.inventory.productDetails,
     );
