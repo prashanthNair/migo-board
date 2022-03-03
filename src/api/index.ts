@@ -4,7 +4,6 @@ const isProduction: boolean = process.env.NODE_ENV === 'production';
 const { hostname } = window.location;
 
 const baseApiUrl = 'https://api.migobucks.com';
-// const baseApiUrl = 'http://127.0.0.1:3000/dev';
 const applicationDomain = 'brands.migobucks.com';
 
 export const getBaseApiUrl = (path?: string) => {
