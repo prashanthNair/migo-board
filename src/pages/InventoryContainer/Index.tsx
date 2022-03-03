@@ -1,10 +1,10 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { useNavigate, useLocation } from 'react-router-dom';
-import ProductList from '../../components/Invenatory/ProductList';
+import { useNavigate, useLocation } from 'react-router-dom'; 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { getProductsByBrandIdThunk } from '../../redux/slices/inventory';
 import { IProductsPayyload } from '../../interfaces/IProductsPayyload';
+import ProductList from '../../components/Invenatory/ProductList';
 
 const InventoryContainer: React.FC = (state) => {
   const navigate = useNavigate();

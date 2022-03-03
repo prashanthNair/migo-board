@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
-import Subscription from '../../components/Subscriptions';
+import { styled } from '@mui/material/styles'; 
+import Subscription from '../../components/subscriptions';
 
 const SubscriptionBox = styled(Box)({
   border: 0,

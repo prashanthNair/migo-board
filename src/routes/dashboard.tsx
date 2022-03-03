@@ -1,10 +1,9 @@
 import React from 'react';
-import type { RouteObject } from 'react-router-dom';
+import type { RouteObject } from 'react-router-dom';   
 import CreateProduct from '../components/Invenatory/CreateProduct';
-
 import Dashboard from '../pages/Dashboard';
 import InventoryContainer from '../pages/InventoryContainer/Index';
-import Orders from '../pages/Orders';
+import Orders from '../pages/orders';
 import OrderTracking from '../pages/OrderTracking';
 
 export default [

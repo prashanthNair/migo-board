@@ -5,8 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import _ from 'lodash';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import Card from './Card';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';  
 import ComboTab from './ComboTab';
 import ExclusiveTab from './ExclusiveTab';
 

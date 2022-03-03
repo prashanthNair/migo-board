@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box, Typography } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { useNavigate } from 'react-router-dom';
-import UpdateStock from './UpdateStock';
+import { useNavigate } from 'react-router-dom'; 
 import { useAppDispatch } from '../../redux/hooks';
-import { ProductDetailsData } from '../../redux/slices/inventory';
-
+import { ProductDetailsData } from '../../redux/slices/inventory'; 
+import UpdateStock from './UpdateStock';
 const CardBody = styled(Box)({
   margin: 10,
   display: 'flex',

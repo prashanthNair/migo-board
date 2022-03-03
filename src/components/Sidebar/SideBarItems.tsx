@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 import { DashboardCustomize } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from '@mui/styles';  
 import DialogBox from '../DialogBox';
 
 const SidebarItem = styled(Box)({

@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 import { Box, styled, Typography } from '@mui/material';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'; 
 import ProductTab from './ProductTab';
 
 const InventoryContainer = styled('div')({
